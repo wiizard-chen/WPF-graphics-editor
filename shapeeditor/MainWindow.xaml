@@ -1,0 +1,38 @@
+﻿<Window x:Class="shapeeditor.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:s="clr-namespace:test"
+        xmlns:local="clr-namespace:shapeeditor"
+        xmlns:Themes="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Aero" 
+        mc:Ignorable="d"
+        Title="MainWindow" Height="675" Width="738" WindowState="Maximized" WindowStartupLocation="CenterScreen">
+    <Window.CommandBindings>
+        <CommandBinding Command="local:Commands.LineTool" Executed="cmd_LineTool"/>
+    </Window.CommandBindings>
+    <Grid>
+        <Canvas x:Name="workspace">
+            <Canvas.Background>
+                <SolidColorBrush Color="{DynamicResource {x:Static SystemColors.AppWorkspaceColorKey}}" />
+            </Canvas.Background>
+            <Border x:Name="border" BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Center" Height="600" Margin="0" VerticalAlignment="Center" Width="600" Padding="0" Canvas.Left="5" Canvas.Top="5">
+                <Border.Effect>
+                    <DropShadowEffect Opacity="0.7" ShadowDepth="4" />
+                </Border.Effect>
+                <Canvas x:Name="canvas" Background="White"  ClipToBounds="True"></Canvas>
+            </Border>
+        </Canvas>
+
+        <ToolBarTray HorizontalAlignment="Left" VerticalAlignment="Top" Background="White">
+            <ToolBar ToolBar.OverflowMode="Never" ToolBarTray.IsLocked="True" 
+                           HorizontalAlignment="Center"  VerticalAlignment="Center" Height="300" Width="60"
+                           ScrollViewer.VerticalScrollBarVisibility="Disabled" BorderThickness="1" BorderBrush="DimGray" >
+                <ToolBar.Effect>
+                    <DropShadowEffect BlurRadius="3" Color="#FF003AFF" Opacity="0.2" ShadowDepth="3" />
+                </ToolBar.Effect>
+                <Button ToolBar.OverflowMode="Never" Name="LineButton" Command="local:Commands.LineTool" ToolTip="直线工具">fuck</Button>
+            </ToolBar>
+        </ToolBarTray>
+    </Grid>
+</Window>
