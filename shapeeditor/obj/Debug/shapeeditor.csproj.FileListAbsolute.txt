@@ -11,3 +11,5 @@ c:\users\administrator\documents\visual studio 2015\Projects\shapeeditor\shapeed
 c:\users\administrator\documents\visual studio 2015\Projects\shapeeditor\shapeeditor\obj\Debug\shapeeditor.csproj.GenerateResource.Cache
 c:\users\administrator\documents\visual studio 2015\Projects\shapeeditor\shapeeditor\obj\Debug\shapeeditor.exe
 c:\users\administrator\documents\visual studio 2015\Projects\shapeeditor\shapeeditor\obj\Debug\shapeeditor.pdb
+G:\Github\WPF-graphics-editor\shapeeditor\obj\Debug\shapeeditor.exe
+G:\Github\WPF-graphics-editor\shapeeditor\obj\Debug\shapeeditor.pdb
