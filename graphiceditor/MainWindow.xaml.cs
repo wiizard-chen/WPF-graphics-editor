@@ -1,16 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using graphiceditor.Tools;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace graphiceditor
 {
@@ -19,9 +8,27 @@ namespace graphiceditor
     /// </summary>
     public partial class MainWindow : Window
     {
+        private ToolTray tooltray;
+
         public MainWindow()
         {
             InitializeComponent();
+            tooltray = new ToolTray(this, this.workspace, this.border, this.canvas);
+        }
+
+        private void cmd_Line(object sender, System.Windows.Input.ExecutedRoutedEventArgs e)
+        {
+            tooltray.ChangeTool(ToolsType.TLine);
+        }
+
+        private void cmd_Rectangle(object sender, System.Windows.Input.ExecutedRoutedEventArgs e)
+        {
+            tooltray.ChangeTool(ToolsType.TRectangle);
+        }
+
+        private void cmd_Selector(object sender, System.Windows.Input.ExecutedRoutedEventArgs e)
+        {
+            tooltray.ChangeTool(ToolsType.TSelector);
         }
     }
 }

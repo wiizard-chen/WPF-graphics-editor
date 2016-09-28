@@ -1,15 +1,13 @@
-c:\users\administrator\documents\visual studio 2015\Projects\shapeeditor\shapeeditor\obj\Debug\shapeeditor.csprojResolveAssemblyReference.cache
-c:\users\administrator\documents\visual studio 2015\Projects\shapeeditor\shapeeditor\obj\Debug\App.g.cs
-c:\users\administrator\documents\visual studio 2015\Projects\shapeeditor\shapeeditor\obj\Debug\shapeeditor_MarkupCompile.cache
-c:\users\administrator\documents\visual studio 2015\Projects\shapeeditor\shapeeditor\bin\Debug\shapeeditor.exe
-c:\users\administrator\documents\visual studio 2015\Projects\shapeeditor\shapeeditor\bin\Debug\shapeeditor.pdb
-c:\users\administrator\documents\visual studio 2015\Projects\shapeeditor\shapeeditor\obj\Debug\MainWindow.g.cs
-c:\users\administrator\documents\visual studio 2015\Projects\shapeeditor\shapeeditor\obj\Debug\shapeeditor_MarkupCompile.lref
-c:\users\administrator\documents\visual studio 2015\Projects\shapeeditor\shapeeditor\obj\Debug\MainWindow.baml
-c:\users\administrator\documents\visual studio 2015\Projects\shapeeditor\shapeeditor\obj\Debug\shapeeditor.g.resources
-c:\users\administrator\documents\visual studio 2015\Projects\shapeeditor\shapeeditor\obj\Debug\shapeeditor.Properties.Resources.resources
-c:\users\administrator\documents\visual studio 2015\Projects\shapeeditor\shapeeditor\obj\Debug\shapeeditor.csproj.GenerateResource.Cache
-c:\users\administrator\documents\visual studio 2015\Projects\shapeeditor\shapeeditor\obj\Debug\shapeeditor.exe
-c:\users\administrator\documents\visual studio 2015\Projects\shapeeditor\shapeeditor\obj\Debug\shapeeditor.pdb
-G:\Github\WPF-graphics-editor\shapeeditor\obj\Debug\shapeeditor.exe
-G:\Github\WPF-graphics-editor\shapeeditor\obj\Debug\shapeeditor.pdb
+C:\Users\Administrator\Documents\Visual Studio 2015\Projects\shapeeditor\shapeeditor\bin\Debug\shapeeditor.exe
+C:\Users\Administrator\Documents\Visual Studio 2015\Projects\shapeeditor\shapeeditor\bin\Debug\shapeeditor.pdb
+C:\Users\Administrator\Documents\Visual Studio 2015\Projects\shapeeditor\shapeeditor\obj\Debug\shapeeditor.csprojResolveAssemblyReference.cache
+C:\Users\Administrator\Documents\Visual Studio 2015\Projects\shapeeditor\shapeeditor\obj\Debug\MainWindow.g.cs
+C:\Users\Administrator\Documents\Visual Studio 2015\Projects\shapeeditor\shapeeditor\obj\Debug\App.g.cs
+C:\Users\Administrator\Documents\Visual Studio 2015\Projects\shapeeditor\shapeeditor\obj\Debug\shapeeditor_MarkupCompile.cache
+C:\Users\Administrator\Documents\Visual Studio 2015\Projects\shapeeditor\shapeeditor\obj\Debug\shapeeditor_MarkupCompile.lref
+C:\Users\Administrator\Documents\Visual Studio 2015\Projects\shapeeditor\shapeeditor\obj\Debug\MainWindow.baml
+C:\Users\Administrator\Documents\Visual Studio 2015\Projects\shapeeditor\shapeeditor\obj\Debug\shapeeditor.g.resources
+C:\Users\Administrator\Documents\Visual Studio 2015\Projects\shapeeditor\shapeeditor\obj\Debug\shapeeditor.Properties.Resources.resources
+C:\Users\Administrator\Documents\Visual Studio 2015\Projects\shapeeditor\shapeeditor\obj\Debug\shapeeditor.csproj.GenerateResource.Cache
+C:\Users\Administrator\Documents\Visual Studio 2015\Projects\shapeeditor\shapeeditor\obj\Debug\shapeeditor.exe
+C:\Users\Administrator\Documents\Visual Studio 2015\Projects\shapeeditor\shapeeditor\obj\Debug\shapeeditor.pdb

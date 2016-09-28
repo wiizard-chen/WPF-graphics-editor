@@ -8,32 +8,57 @@ using System.Windows.Input;
 
 namespace graphiceditor.Tools
 {
-    public class Tools
+    public class DrawTool : IMouseOperation
     {
-        //public Window window; // 窗口（鼠源）
-        //public Canvas workspace; //  选取框
-        //public Border canvasBorder; // 绘图区域的工作的范围（用于定位）
-        //public Canvas canvas; // 工作区域用于绘图
-        //public Point? mousePostion = null;//鼠标点击位置
+        public ToolsType ToolType { get; set; }
 
+        public Window Window; // 窗口（鼠源）
+        public Canvas WorkSpace; //  选取框
+        public Border CanvasBorder; // 绘图区域的工作的范围（用于定位）
+        public Canvas Canvas; // 工作区域用于绘图
+        public Point? MousePosition = null;
 
-        public event EventHandler<MouseEventArgs> MouseDown;
-        public event EventHandler<MouseEventArgs> MouseUp;
-        public event EventHandler<MouseEventArgs> MouseMove;
+        public List<DrawTool> Tools { get; set; }
+        public FrameworkElement Element { get; set; }
 
-        //public Tools(Window Window, Canvas Workspace, Border CanvasBorder, Canvas Canvas)
-        //{
-        //    this.window = Window;
-        //    this.canvas = Canvas;
-        //    this.workspace = Workspace;
-        //    this.canvasBorder = CanvasBorder;
-        //}
+        public event EventHandler MouseDownEvent;
+        public event EventHandler MouseUpEvent;
+        public event EventHandler MouseMoveEvent;
 
+        public DrawTool(Window window, Canvas workspace, Border canvasborder, Canvas canvas)
+        {
+            this.Window = window;
+            this.WorkSpace = workspace;
+            this.CanvasBorder = canvasborder;
+            this.Canvas = canvas;
+        }
+
+        public virtual void MouseDown(object sender, MouseButtonEventArgs e)
+        {
+        }
+
+        public virtual void MouseUp(object sender, MouseButtonEventArgs e)
+        {
+        }
+
+        public virtual void MouseMove(object sender, MouseEventArgs e)
+        {
+        }
     }
 
-    public enum ToolsType :byte
+    interface IMouseOperation
     {
-        line = 0,
-        Retangle=1
+        void MouseDown(object sender, MouseButtonEventArgs e);
+        void MouseUp(object sender, MouseButtonEventArgs e);
+        void MouseMove(object sender, MouseEventArgs e);
+    }
+
+    public enum ToolsType : byte
+    {
+        None = 0,
+        TSelector = 1,
+        TLine,
+        TRectangle,
+        TCircle,
     }
 }

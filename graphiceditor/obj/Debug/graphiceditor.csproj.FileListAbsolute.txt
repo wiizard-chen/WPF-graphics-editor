@@ -1,0 +1,26 @@
+C:\Users\Administrator\Documents\Visual Studio 2015\Projects\shapeeditor\graphiceditor\obj\Debug\graphiceditor.csprojResolveAssemblyReference.cache
+C:\Users\Administrator\Documents\Visual Studio 2015\Projects\shapeeditor\graphiceditor\obj\Debug\MainWindow.g.cs
+C:\Users\Administrator\Documents\Visual Studio 2015\Projects\shapeeditor\graphiceditor\obj\Debug\App.g.cs
+C:\Users\Administrator\Documents\Visual Studio 2015\Projects\shapeeditor\graphiceditor\obj\Debug\graphiceditor_MarkupCompile.cache
+C:\Users\Administrator\Documents\Visual Studio 2015\Projects\shapeeditor\graphiceditor\obj\Debug\graphiceditor_MarkupCompile.lref
+C:\Users\Administrator\Documents\Visual Studio 2015\Projects\shapeeditor\graphiceditor\bin\Debug\graphiceditor.exe
+C:\Users\Administrator\Documents\Visual Studio 2015\Projects\shapeeditor\graphiceditor\bin\Debug\graphiceditor.pdb
+C:\Users\Administrator\Documents\Visual Studio 2015\Projects\shapeeditor\graphiceditor\obj\Debug\MainWindow.baml
+C:\Users\Administrator\Documents\Visual Studio 2015\Projects\shapeeditor\graphiceditor\obj\Debug\graphiceditor.g.resources
+C:\Users\Administrator\Documents\Visual Studio 2015\Projects\shapeeditor\graphiceditor\obj\Debug\graphiceditor.Properties.Resources.resources
+C:\Users\Administrator\Documents\Visual Studio 2015\Projects\shapeeditor\graphiceditor\obj\Debug\graphiceditor.csproj.GenerateResource.Cache
+C:\Users\Administrator\Documents\Visual Studio 2015\Projects\shapeeditor\graphiceditor\obj\Debug\graphiceditor.exe
+C:\Users\Administrator\Documents\Visual Studio 2015\Projects\shapeeditor\graphiceditor\obj\Debug\graphiceditor.pdb
+F:\FUCK\shapeeditor\graphiceditor\obj\Debug\graphiceditor.exe
+F:\FUCK\shapeeditor\graphiceditor\obj\Debug\graphiceditor.pdb
+F:\FUCK\shapeeditor\graphiceditor\bin\Debug\graphiceditor.exe
+F:\FUCK\shapeeditor\graphiceditor\bin\Debug\graphiceditor.pdb
+F:\FUCK\shapeeditor\graphiceditor\obj\Debug\graphiceditor.csprojResolveAssemblyReference.cache
+F:\FUCK\shapeeditor\graphiceditor\obj\Debug\MainWindow.g.cs
+F:\FUCK\shapeeditor\graphiceditor\obj\Debug\App.g.cs
+F:\FUCK\shapeeditor\graphiceditor\obj\Debug\graphiceditor_MarkupCompile.cache
+F:\FUCK\shapeeditor\graphiceditor\obj\Debug\graphiceditor_MarkupCompile.lref
+F:\FUCK\shapeeditor\graphiceditor\obj\Debug\MainWindow.baml
+F:\FUCK\shapeeditor\graphiceditor\obj\Debug\graphiceditor.g.resources
+F:\FUCK\shapeeditor\graphiceditor\obj\Debug\graphiceditor.Properties.Resources.resources
+F:\FUCK\shapeeditor\graphiceditor\obj\Debug\graphiceditor.csproj.GenerateResource.Cache

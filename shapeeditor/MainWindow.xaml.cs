@@ -24,6 +24,8 @@ namespace shapeeditor
         {
             InitializeComponent();
             this.selectedTool = new DrawTool(this, this.workspace, this.border, this.canvas, DrawToolType.Pointer);
+            var asm = System.AppDomain.CurrentDomain.GetAssemblies()[0];
+            asm.GetType("");
            // this.selectedTool.SelectionChange += selectedTool_SelectionChange;
             //this.UpdateButtons();
         }

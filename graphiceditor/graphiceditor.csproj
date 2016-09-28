@@ -53,8 +53,11 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Command\Commands.cs" />
     <Compile Include="Tools\Line.cs" />
     <Compile Include="Tools\Rectangle.cs" />
+    <Compile Include="Tools\Selector.cs" />
+    <Compile Include="Tools\ShapesExtension.cs" />
     <Compile Include="Tools\Tools.cs" />
     <Compile Include="ToolTray.cs" />
     <Page Include="MainWindow.xaml">
