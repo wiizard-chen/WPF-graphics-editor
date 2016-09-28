@@ -39,6 +39,8 @@ namespace graphiceditor.Tools
                     line.StrokeThickness = 10;
                     line.X1 = pos.Value.X;
                     line.Y1 = pos.Value.Y;
+                    line.X2 = pos.Value.X;
+                    line.Y2 = pos.Value.Y;
                     line.Tag = ToolsType.TLine;
                     this.Canvas.Children.Add(line);
                 }

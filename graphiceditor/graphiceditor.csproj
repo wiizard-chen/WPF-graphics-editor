@@ -53,9 +53,11 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Adorner\ResizeChrome.cs" />
     <Compile Include="Command\Commands.cs" />
     <Compile Include="Tools\Line.cs" />
     <Compile Include="Tools\Rectangle.cs" />
+    <Compile Include="Adorner\ResizeAdorner.cs" />
     <Compile Include="Tools\Selector.cs" />
     <Compile Include="Tools\ShapesExtension.cs" />
     <Compile Include="Tools\Tools.cs" />
@@ -97,6 +99,7 @@
     </None>
     <AppDesigner Include="Properties\" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

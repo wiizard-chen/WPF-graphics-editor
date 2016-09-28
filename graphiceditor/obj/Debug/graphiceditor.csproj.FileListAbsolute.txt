@@ -24,3 +24,16 @@ F:\FUCK\shapeeditor\graphiceditor\obj\Debug\MainWindow.baml
 F:\FUCK\shapeeditor\graphiceditor\obj\Debug\graphiceditor.g.resources
 F:\FUCK\shapeeditor\graphiceditor\obj\Debug\graphiceditor.Properties.Resources.resources
 F:\FUCK\shapeeditor\graphiceditor\obj\Debug\graphiceditor.csproj.GenerateResource.Cache
+G:\Github\WPF-graphics-editor\graphiceditor\obj\Debug\graphiceditor.exe
+G:\Github\WPF-graphics-editor\graphiceditor\obj\Debug\graphiceditor.pdb
+G:\Github\WPF-graphics-editor\graphiceditor\bin\Debug\graphiceditor.exe
+G:\Github\WPF-graphics-editor\graphiceditor\bin\Debug\graphiceditor.pdb
+G:\Github\WPF-graphics-editor\graphiceditor\obj\Debug\graphiceditor.csprojResolveAssemblyReference.cache
+G:\Github\WPF-graphics-editor\graphiceditor\obj\Debug\MainWindow.g.cs
+G:\Github\WPF-graphics-editor\graphiceditor\obj\Debug\App.g.cs
+G:\Github\WPF-graphics-editor\graphiceditor\obj\Debug\graphiceditor_MarkupCompile.cache
+G:\Github\WPF-graphics-editor\graphiceditor\obj\Debug\graphiceditor_MarkupCompile.lref
+G:\Github\WPF-graphics-editor\graphiceditor\obj\Debug\MainWindow.baml
+G:\Github\WPF-graphics-editor\graphiceditor\obj\Debug\graphiceditor.g.resources
+G:\Github\WPF-graphics-editor\graphiceditor\obj\Debug\graphiceditor.Properties.Resources.resources
+G:\Github\WPF-graphics-editor\graphiceditor\obj\Debug\graphiceditor.csproj.GenerateResource.Cache
