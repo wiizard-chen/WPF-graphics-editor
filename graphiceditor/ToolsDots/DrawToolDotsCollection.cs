@@ -4,7 +4,9 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Windows;
-
+/// <summary>
+/// FUCKING CHIRSTMAS!!!!
+/// </summary>
 namespace graphiceditor.ToolsDots
 {
    public  class DrawToolDotsCollection :ObservableCollection<DrawToolDot>
