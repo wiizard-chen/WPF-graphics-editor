@@ -37,3 +37,5 @@ G:\Github\WPF-graphics-editor\graphiceditor\obj\Debug\MainWindow.baml
 G:\Github\WPF-graphics-editor\graphiceditor\obj\Debug\graphiceditor.g.resources
 G:\Github\WPF-graphics-editor\graphiceditor\obj\Debug\graphiceditor.Properties.Resources.resources
 G:\Github\WPF-graphics-editor\graphiceditor\obj\Debug\graphiceditor.csproj.GenerateResource.Cache
+E:\Github\WPF-graphics-editor\graphiceditor\obj\Debug\graphiceditor.exe
+E:\Github\WPF-graphics-editor\graphiceditor\obj\Debug\graphiceditor.pdb
