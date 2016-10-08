@@ -55,9 +55,11 @@
     </ApplicationDefinition>
     <Compile Include="Adorner\ResizeChrome.cs" />
     <Compile Include="Command\Commands.cs" />
+    <Compile Include="ToolsDots\DotsConverter.cs" />
     <Compile Include="ToolsDots\DrawToolDot.cs" />
     <Compile Include="ToolsDots\DrawToolDots.cs" />
     <Compile Include="ToolsDots\DrawToolDotsCollection.cs" />
+    <Compile Include="ToolsDots\StaticXaml.cs" />
     <Compile Include="Tools\Line.cs" />
     <Compile Include="Tools\Rectangle.cs" />
     <Compile Include="Adorner\ResizeAdorner.cs" />

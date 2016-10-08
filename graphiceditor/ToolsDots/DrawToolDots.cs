@@ -32,7 +32,7 @@ namespace graphiceditor.ToolsDots
 
         public DrawToolDots(Shape s) :this()
         {
-            
+            this.SetSource(s);
         }
 
 
@@ -54,7 +54,10 @@ namespace graphiceditor.ToolsDots
 
         private void SetLineSource(Line l)
         {
-
+            Point p1 = new Point(l.X1, l.Y1);
+            Point p2 = new Point(l.X2, l.Y2);
+            List<Point> points = new List<Point>() { p1, p2 };
+            this.DotsList.AddPoints(this, points);
         }
     }
 }
