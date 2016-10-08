@@ -39,3 +39,14 @@ G:\Github\WPF-graphics-editor\graphiceditor\obj\Debug\graphiceditor.Properties.R
 G:\Github\WPF-graphics-editor\graphiceditor\obj\Debug\graphiceditor.csproj.GenerateResource.Cache
 E:\Github\WPF-graphics-editor\graphiceditor\obj\Debug\graphiceditor.exe
 E:\Github\WPF-graphics-editor\graphiceditor\obj\Debug\graphiceditor.pdb
+E:\Github\WPF-graphics-editor\graphiceditor\bin\Debug\graphiceditor.exe
+E:\Github\WPF-graphics-editor\graphiceditor\bin\Debug\graphiceditor.pdb
+E:\Github\WPF-graphics-editor\graphiceditor\obj\Debug\graphiceditor.csprojResolveAssemblyReference.cache
+E:\Github\WPF-graphics-editor\graphiceditor\obj\Debug\MainWindow.g.cs
+E:\Github\WPF-graphics-editor\graphiceditor\obj\Debug\App.g.cs
+E:\Github\WPF-graphics-editor\graphiceditor\obj\Debug\graphiceditor_MarkupCompile.cache
+E:\Github\WPF-graphics-editor\graphiceditor\obj\Debug\graphiceditor_MarkupCompile.lref
+E:\Github\WPF-graphics-editor\graphiceditor\obj\Debug\MainWindow.baml
+E:\Github\WPF-graphics-editor\graphiceditor\obj\Debug\graphiceditor.g.resources
+E:\Github\WPF-graphics-editor\graphiceditor\obj\Debug\graphiceditor.Properties.Resources.resources
+E:\Github\WPF-graphics-editor\graphiceditor\obj\Debug\graphiceditor.csproj.GenerateResource.Cache

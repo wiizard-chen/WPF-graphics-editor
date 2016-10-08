@@ -19,7 +19,7 @@ namespace graphiceditor.Tools
         public Canvas Canvas; // 工作区域用于绘图
 
         public List<DrawTool> tools;
-        public DrawTool SingleTool;
+        public DrawTool SelectTool;
 
 
 
@@ -46,8 +46,8 @@ namespace graphiceditor.Tools
 
         private void InitializeTools(ToolsType type)
         {
-            if (SingleTool != null)
-                RemoveMouseEvent(SingleTool);
+            if (SelectTool != null)
+                RemoveMouseEvent(SelectTool);
             if (type != ToolsType.None)
                 CreateSingleTool(type);
         }
@@ -56,7 +56,7 @@ namespace graphiceditor.Tools
         {
             string assemblyName = "graphiceditor";
             string typeName = "graphiceditor.Tools." + type;
-            SingleTool = Assembly.Load(assemblyName).CreateInstance(
+            SelectTool = Assembly.Load(assemblyName).CreateInstance(
                 typeName,
                 true, BindingFlags.Default,
                 null,
@@ -64,9 +64,8 @@ namespace graphiceditor.Tools
                 null,
                 null)
                 as DrawTool;
-
-            SingleTool.Tools = tools;
-            AddMouseEvent(SingleTool);
+            SelectTool.Tools = tools;
+            AddMouseEvent(SelectTool);
 
         }
 
