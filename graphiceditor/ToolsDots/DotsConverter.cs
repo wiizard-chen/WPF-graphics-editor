@@ -12,7 +12,7 @@ namespace graphiceditor.ToolsDots
     /// <summary>
     /// 点与坐标的转换
     /// </summary>
-    public class DotsConverter : IMultiValueConverter
+    public class DotsCorrsConverter : IMultiValueConverter
     {
         public object Convert(object[] values, Type targetType, object parameter, CultureInfo culture)
         {

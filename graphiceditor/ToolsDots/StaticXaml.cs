@@ -21,20 +21,20 @@ namespace graphiceditor.ToolsDots
             </VisualBrush.Visual>
         </VisualBrush>";
 
-        protected static readonly String BorderControlXaml =
+        public static readonly String BorderControlXaml =
             @"<Border 
                 xmlns='http://schemas.microsoft.com/winfx/2006/xaml/presentation'
                 xmlns:x='http://schemas.microsoft.com/winfx/2006/xaml'
                 BorderBrush='#CCFF0000' BorderThickness='1' Visibility='Hidden'/>";
 
-        protected static readonly String DotsItemsControlXaml =
+        public static readonly String DotsItemsControlXaml =
             @"<ItemsControl 
                 xmlns='http://schemas.microsoft.com/winfx/2006/xaml/presentation'
                 xmlns:x='http://schemas.microsoft.com/winfx/2006/xaml'
-                xmlns:tool='clr-namespace:WpfPaint.Tools;assembly=WpfPaint'
+                xmlns:tool='clr-namespace:graphiceditor.ToolsDots;assembly=graphiceditor'
                 Canvas.ZIndex='200' >
             <ItemsControl.Resources>
-                <tool:PointsToDotsCoorsConverter x:Key='CoorsConvert'></tool:PointsToDotsCoorsConverter>
+                <tool:DotsCorrsConverter x:Key='CoorsConvert'/>
                 <Style x:Key='PolylineDotStyle' TargetType='Rectangle'>
                     <Setter Property='Fill' Value='Transparent'></Setter>
                     <Setter Property='Stroke' Value='Red'></Setter>

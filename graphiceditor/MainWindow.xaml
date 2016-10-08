@@ -1,37 +1,60 @@
 ﻿<Window x:Class="graphiceditor.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:cmd="clr-namespace:graphiceditor.Command"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:cmd ="clr-namespace:graphiceditor.Command"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:graphiceditor"
-        mc:Ignorable="d"
-        Title="MainWindow" Height="400" Width="540">
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        Title="MainWindow"
+        Width="540"
+        Height="400"
+        mc:Ignorable="d">
     <Window.CommandBindings>
         <CommandBinding Command="cmd:Commands.Line" Executed="cmd_Line" />
-        <CommandBinding Command="cmd:Commands.Rectangle" Executed="cmd_Rectangle"/>
-        <CommandBinding Command="cmd:Commands.Selector" Executed="cmd_Selector"/>
+        <CommandBinding Command="cmd:Commands.Rectangle" Executed="cmd_Rectangle" />
+        <CommandBinding Command="cmd:Commands.Selector" Executed="cmd_Selector" />
     </Window.CommandBindings>
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="auto"/>
-            <RowDefinition Height="70*"/>
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="70*" />
         </Grid.RowDefinitions>
-        <ToolBar Name="ToolBar1" Grid.Row="0"  VerticalAlignment="Top" HorizontalAlignment="Left">
-            <Button Content="Line" Margin="3" Command="cmd:Commands.Line"/>
-            <Button Content="Rectangle" Margin="3" Command="cmd:Commands.Rectangle"/>
-            <Button Content="Selector" Margin="3" Command="cmd:Commands.Selector"/>
+        <ToolBar Name="ToolBar1"
+                 Grid.Row="0"
+                 HorizontalAlignment="Left"
+                 VerticalAlignment="Top">
+            <Button Margin="3"
+                    Command="cmd:Commands.Line"
+                    Content="Line" />
+            <Button Margin="3"
+                    Command="cmd:Commands.Rectangle"
+                    Content="Rectangle" />
+            <Button Margin="3"
+                    Command="cmd:Commands.Selector"
+                    Content="Selector" />
         </ToolBar>
         <Canvas x:Name="workspace" Grid.Row="1">
             <Canvas.Background>
                 <SolidColorBrush Color="{DynamicResource {x:Static SystemColors.AppWorkspaceColorKey}}" />
             </Canvas.Background>
-            <Border x:Name="border" BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Center" Height="300" Margin="0" VerticalAlignment="Center" Width="500" Padding="0" Canvas.Left="10" Canvas.Top="10">
+            <Border x:Name="border"
+                    Canvas.Left="10"
+                    Canvas.Top="10"
+                    Width="500"
+                    Height="300"
+                    Margin="0"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    BorderBrush="Black"
+                    BorderThickness="1"
+                    Padding="0">
                 <Border.Effect>
                     <DropShadowEffect Opacity="0.7" ShadowDepth="4" />
                 </Border.Effect>
-                <Canvas x:Name="canvas"  Margin="0" ClipToBounds="True" Background="White">
-                </Canvas>
+                <Canvas x:Name="canvas"
+                        Margin="0"
+                        Background="White"
+                        ClipToBounds="True" />
             </Border>
         </Canvas>
     </Grid>
