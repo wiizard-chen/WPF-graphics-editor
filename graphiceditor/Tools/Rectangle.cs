@@ -15,6 +15,10 @@ namespace graphiceditor.Tools
         private Path rectangle;
         private TRectangle T_rectangle;
 
+        public double Width { get; set; }
+        public double Height { get; set; }
+        public Point StartPosition { get; set; }
+
         public TRectangle(Window Window, Canvas Workspace, Border CanvasBorder, Canvas Canvas) : base(Window, Workspace, CanvasBorder, Canvas)
         {
             this.ToolType = ToolsType.TRectangle;
@@ -84,6 +88,24 @@ namespace graphiceditor.Tools
                     T_rectangle.rectangle = this.rectangle;
                     T_rectangle.Element = this.rectangle;
                     this.Tools.Add(T_rectangle);
+                    //this.Canvas.Children.Remove(this.rectangle);
+
+                    //this.loadrect = new Canvas();
+                    //this.loadrect.Width = this.rectangle.Width;
+                    //this.loadrect.Height = this.rectangle.Height;
+                    //this.Canvas.Children.Add(this.loadrect);
+                    //this.loadrect.Children.Add(this.rectangle);
+                    PolyLineSegment line = this.rectangle.GetSegment();
+                    this.Width =Math.Abs( line.Points[0].X - line.Points[2].X);
+                    this.Height =Math.Abs( line.Points[0].Y - line.Points[2].Y);
+                    if (line.Points[0].X > line.Points[2].X || line.Points[0].Y > line.Points[2].Y)
+                    {
+                        this.StartPosition = line.Points[2];
+                    }
+                    else
+                    {
+                        this.StartPosition = line.Points[0];
+                    }
                     this.rectangle = null;
                 }
             }

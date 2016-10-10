@@ -7,6 +7,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "shapeeditor", "shapeeditor\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "graphiceditor", "graphiceditor\graphiceditor.csproj", "{BAF8DA22-0C84-4B34-9B6A-BDA729D46107}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WPFDrawingTool", "WpfApplication1\WPFDrawingTool.csproj", "{DE9007A0-4E89-4DE0-BEEE-0E959C512699}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ToolTray", "ToolTray\ToolTray.csproj", "{FFF58AD6-0B88-4E74-A462-941532708408}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +25,14 @@ Global
 		{BAF8DA22-0C84-4B34-9B6A-BDA729D46107}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BAF8DA22-0C84-4B34-9B6A-BDA729D46107}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BAF8DA22-0C84-4B34-9B6A-BDA729D46107}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DE9007A0-4E89-4DE0-BEEE-0E959C512699}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DE9007A0-4E89-4DE0-BEEE-0E959C512699}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DE9007A0-4E89-4DE0-BEEE-0E959C512699}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DE9007A0-4E89-4DE0-BEEE-0E959C512699}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FFF58AD6-0B88-4E74-A462-941532708408}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FFF58AD6-0B88-4E74-A462-941532708408}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FFF58AD6-0B88-4E74-A462-941532708408}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FFF58AD6-0B88-4E74-A462-941532708408}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -17,7 +17,7 @@ namespace graphiceditor.Tools
         public Border CanvasBorder; // 绘图区域的工作的范围（用于定位）
         public Canvas Canvas; // 工作区域用于绘图
         public Point? MousePosition = null;
-
+        public Canvas loadrect { get; set; }
         public List<DrawTool> Tools { get; set; }
         public FrameworkElement Element { get; set; }
 
@@ -44,6 +44,7 @@ namespace graphiceditor.Tools
         public virtual void MouseMove(object sender, MouseEventArgs e)
         {
         }
+
     }
 
     interface IMouseOperation

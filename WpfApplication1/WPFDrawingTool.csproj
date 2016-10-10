@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{BAF8DA22-0C84-4B34-9B6A-BDA729D46107}</ProjectGuid>
+    <ProjectGuid>{DE9007A0-4E89-4DE0-BEEE-0E959C512699}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>graphiceditor</RootNamespace>
-    <AssemblyName>graphiceditor</AssemblyName>
+    <RootNamespace>WpfApplication1</RootNamespace>
+    <AssemblyName>WpfApplication1</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -53,21 +53,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Adorner\CanvasAdorner.cs" />
-    <Compile Include="Adorner\ResizeChrome.cs" />
-    <Compile Include="Command\Commands.cs" />
-    <Compile Include="ToolsDots\DotsConverter.cs" />
-    <Compile Include="ToolsDots\DrawToolDot.cs" />
-    <Compile Include="ToolsDots\DrawToolDots.cs" />
-    <Compile Include="ToolsDots\DrawToolDotsCollection.cs" />
-    <Compile Include="ToolsDots\StaticXaml.cs" />
-    <Compile Include="Tools\Line.cs" />
-    <Compile Include="Tools\Rectangle.cs" />
-    <Compile Include="Adorner\ResizeAdorner.cs" />
-    <Compile Include="Tools\Selector.cs" />
-    <Compile Include="Tools\ShapesExtension.cs" />
-    <Compile Include="Tools\Tools.cs" />
-    <Compile Include="ToolTray.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -105,7 +90,12 @@
     </None>
     <AppDesigner Include="Properties\" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\ToolTray\ToolTray.csproj">
+      <Project>{fff58ad6-0b88-4e74-a462-941532708408}</Project>
+      <Name>ToolTray</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

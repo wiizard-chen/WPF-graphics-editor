@@ -10,6 +10,7 @@ using System.Windows.Media;
 using System.Reflection;
 using graphiceditor.ToolsDots;
 using System.Windows.Markup;
+using System.Windows.Documents;
 
 namespace graphiceditor.Tools
 {
@@ -21,6 +22,7 @@ namespace graphiceditor.Tools
         private ItemsControl dotsControl;
         private DrawToolDots dots;
         private DrawToolDot selectedDot;
+
 
         public TSelector(Window window, Canvas workspace, Border canvasborder, Canvas canvas) : base(window, workspace, canvasborder, canvas)
         {
@@ -36,7 +38,7 @@ namespace graphiceditor.Tools
             this.WorkSpace.Children.Add(this.border);
             this.Canvas.Children.Add(this.dotsControl);
 
-            AddDotsEvent();
+            // AddDotsEvent();
 
         }
 
@@ -74,11 +76,11 @@ namespace graphiceditor.Tools
             if ((e == null || e.ChangedButton == MouseButton.Left) && this.selectedDot != null)
             {
                 var intersecteedDots = this.dots.DotsList
-                    .Where(d => Math.Abs(d.ID - this.selectedDot.ID) == 1 
+                    .Where(d => Math.Abs(d.ID - this.selectedDot.ID) == 1
                     && DrawToolDot.IsDotsIntersect(this.selectedDot, d));
-                if(this.selectedDot.Parent.Source is Line)
+                if (this.selectedDot.Parent.Source is Line)
                 {
-                    if(intersecteedDots.Count()>0)
+                    if (intersecteedDots.Count() > 0)
                     {
 
                     }
@@ -93,10 +95,14 @@ namespace graphiceditor.Tools
             if (e.ChangedButton == MouseButton.Left)
             {
                 this.MousePosition = e.GetPosition(this.Canvas);
-                this.GetCanvasDrawTool();
+                this.SelectedTool = this.GetCanvasDrawTool();
+                if (this.SelectedTool.ToolType == ToolsType.TRectangle)
+                {
+                    TEST(SelectedTool as TRectangle);
+                }
                 if (SelectedTool != null)
                 {
-                    Mouse.OverrideCursor = Cursors.SizeAll;
+                    //Mouse.OverrideCursor = Cursors.SizeAll;
                 }
             }
         }
@@ -114,16 +120,19 @@ namespace graphiceditor.Tools
 
         public override void MouseUp(object sender, MouseButtonEventArgs e)
         {
-            Mouse.OverrideCursor = Cursors.Arrow;
+            // Mouse.OverrideCursor = Cursors.Arrow;
         }
+
+
+
 
         /// <summary>
         /// 获取鼠标悬停的控件
         /// </summary>
         /// <returns></returns>
-        private void GetCanvasDrawTool()
+        private DrawTool GetCanvasDrawTool()
         {
-            SelectedTool = this.Tools.Where(s =>
+            return this.Tools.Where(s =>
             s.Element.IsMouseOver).FirstOrDefault();
         }
 
@@ -147,5 +156,22 @@ namespace graphiceditor.Tools
             this.MousePosition = Mouse.GetPosition(this.Canvas);
         }
 
+
+        private void  TEST(TRectangle rect)
+        {
+            this.Canvas.Children.Remove(SelectedTool.Element);
+            var test = new Canvas();
+            test.Width = rect.Width;
+            test.Height = rect.Height;
+            test.Children.Add(rect.Element);
+            this.Canvas.Children.Add(test);
+            System.Windows.Controls.Canvas.SetTop(test,rect.StartPosition.X);
+            System.Windows.Controls.Canvas.SetLeft(test, rect.StartPosition.Y);
+
+
+            var layer = AdornerLayer.GetAdornerLayer(test);
+            var adorner = new CanvasAdorner(test);
+            layer.Add(adorner);
+        }
     }
 }
