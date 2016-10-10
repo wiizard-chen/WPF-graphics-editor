@@ -17,9 +17,12 @@ namespace ToolTray
         public Point LocalPosition { get; set; }
 
         private Point? MousePosition;
-        //public Rectangle rectangle;
 
         public Path rectangle { get; set; }
+
+        public Double Width { get; set; }
+
+        public Double Height { get; set; }
 
         public Canvas Parentcanvas;
 
@@ -27,8 +30,6 @@ namespace ToolTray
         {
             this.StartPosition = point;
             this.MousePosition = point;
-            //rectangle = new Rectangle() { Width = 0, Height = 0 };
-            //rectangle.Tag = this;
 
             PolyLineSegment polyLineSegment = new PolyLineSegment();
             polyLineSegment.Points = new PointCollection(new Point[] { point, point, point, point });
@@ -50,34 +51,47 @@ namespace ToolTray
 
         public void ChangeRectangle(Point point)
         {
-            //this.rectangle.Width = Math.Abs(this.StartPosition.Value.X - point.X);
-            //this.rectangle.Height = Math.Abs(this.StartPosition.Value.Y - point.Y);
-            //return true;
-
             PolyLineSegment line = this.rectangle.GetSegment();
             double w = point.X - this.MousePosition.Value.X;
             double h = point.Y - this.MousePosition.Value.Y;
             Point p1 = line.Points[1];
             Point p2 = line.Points[2];
             Point p3 = line.Points[3];
-
             p1.Offset(w, 0);
             p2.Offset(w, h);
             p3.Offset(0, h);
-
             line.Points[1] = p1;
             line.Points[2] = p2;
             line.Points[3] = p3;
             this.MousePosition = point;
         }
 
+
+
         public Canvas NewCanvas()
         {
+            this.GetProperty();
             this.Parentcanvas = new Canvas();
-            this.Parentcanvas.Width = rectangle.Width;
-            this.Parentcanvas.Height = rectangle.Height;
+            this.Parentcanvas.Width = this.Width+5;
+            this.Parentcanvas.Height = this.Height+5;
             this.Parentcanvas.Children.Add(rectangle);
+
             return Parentcanvas;
+        }
+
+        private void GetProperty()
+        {
+            PolyLineSegment line = this.rectangle.GetSegment();
+            this.Width = Math.Abs(line.Points[0].X - line.Points[2].X);
+            this.Height = Math.Abs(line.Points[0].Y - line.Points[2].Y);
+            if (line.Points[0].X < line.Points[2].X && line.Points[0].Y < line.Points[2].Y)
+            {
+                this.StartPosition = line.Points[2];
+            }
+            else
+            {
+                this.StartPosition = line.Points[0];
+            }
         }
     }
 }

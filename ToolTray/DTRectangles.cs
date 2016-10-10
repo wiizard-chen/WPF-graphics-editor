@@ -1,7 +1,9 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Shapes;
 
@@ -47,11 +49,28 @@ namespace ToolTray
         }
         public void DWMouseUp(object sender, MouseButtonEventArgs e)
         {
-            
-            //this.canvas.Children.Remove(trectangle.rectangle);
-            //this.canvas.Children.Add(trectangle.NewCanvas());
+            this.canvas.Children.Remove(trectangle.rectangle);
+            this.trectangle.NewCanvas();
+            this.canvas.Children.Add(trectangle.Parentcanvas);
+            Canvas.SetTop(trectangle.Parentcanvas, trectangle.StartPosition.Value.Y);
+            Canvas.SetLeft(trectangle.Parentcanvas, trectangle.StartPosition.Value.X);
+
+            var layer = AdornerLayer.GetAdornerLayer(trectangle.Parentcanvas);
+            var adorner = new CanvasAdorner(trectangle.Parentcanvas);
+            layer.Add(adorner);
+            TESTCANVAS();
         }
 
-      
+        public void TESTCANVAS()
+        {
+            foreach (var item in this.canvas.Children)
+            {
+                Debug.WriteLine(item.ToString());
+            }
+            Debug.WriteLine(trectangle.Parentcanvas.Width);
+            Debug.WriteLine(trectangle.Parentcanvas.Height);
+
+        }
+
     }
 }

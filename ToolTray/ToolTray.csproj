@@ -43,6 +43,7 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CanvasAdorner.cs" />
     <Compile Include="DTRectangle.cs" />
     <Compile Include="DTRectangles.cs" />
     <Compile Include="Extension.cs" />
