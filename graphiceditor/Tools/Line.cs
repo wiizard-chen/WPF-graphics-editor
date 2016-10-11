@@ -78,5 +78,6 @@ namespace graphiceditor.Tools
             line.X2 = end.X;
             line.Y2 = end.Y;
         }
+
     }
 }

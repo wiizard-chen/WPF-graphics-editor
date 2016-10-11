@@ -9,8 +9,10 @@
         Height="400"
         mc:Ignorable="d">
     <Grid>
-        
-        <Canvas x:Name="workspace" Grid.Row="0" Visibility="Visible">
+
+        <Canvas x:Name="workspace"
+                Grid.Row="0"
+                Visibility="Visible">
             <Canvas.Background>
                 <SolidColorBrush Color="{DynamicResource {x:Static SystemColors.AppWorkspaceColorKey}}" />
             </Canvas.Background>
@@ -35,8 +37,8 @@
             </Border>
         </Canvas>
 
-        <!--<Grid Width="100" Height="100">
-            <Rectangle Stroke="Yellow" Fill="Black" StrokeThickness="10"></Rectangle>
-        </Grid>-->
+        <Grid Width="100" Height="100">
+            <Line Stroke="Black" X1="0" X2="0" Y1="0" Y2="50"  Width="50" Stretch="Fill"></Line>
+        </Grid>
     </Grid>
 </Window>

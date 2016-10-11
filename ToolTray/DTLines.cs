@@ -19,6 +19,10 @@ namespace ToolTray
 
         private bool IsNew;
 
+        public DTLines(Canvas parent)
+        {
+            this.canvas = parent;
+        }
 
         public void DWMouseDown(object sender, MouseButtonEventArgs e)
         {
@@ -35,12 +39,21 @@ namespace ToolTray
             {
                 Point p = e.GetPosition(this.canvas);
                 if (IsNew)
+                {
+                    tline = new TLine(this.MousePosition.Value);
+                    this.canvas.Children.Add(tline.line);
                     this.IsNew = false;
+                }
+                tline.ChangeLine(p);
             }
         }
 
         public void DWMouseUp(object sender, MouseButtonEventArgs e)
         {
+            var layer = AdornerLayer.GetAdornerLayer(this.canvas);
+            var adorner = new LineAdorner(tline.line,tline.StartPoint,tline.EndPoint);
+            adorner.ElementSizeChanged +=tline.ResizeLine;
+            layer.Add(adorner);
         }
     }
 }

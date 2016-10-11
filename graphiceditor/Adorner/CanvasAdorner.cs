@@ -73,9 +73,7 @@ namespace graphiceditor
 
         protected override Size ArrangeOverride(Size finalSize)
         {
-            //double offset = THUMB_SIZE / 2;
             double offset = THUMB_SIZE / 2;
-
             Size sz = new Size(THUMB_SIZE, THUMB_SIZE);
             tl.Arrange(new Rect(new Point(-offset, -offset), sz));
             tr.Arrange(new Rect(new Point(AdornedElement.RenderSize.Width - offset, -offset), sz));
