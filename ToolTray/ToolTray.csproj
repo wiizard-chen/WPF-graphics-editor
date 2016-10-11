@@ -48,6 +48,8 @@
     <Compile Include="DTLines.cs" />
     <Compile Include="DTRectangle.cs" />
     <Compile Include="DTRectangles.cs" />
+    <Compile Include="DTText.cs" />
+    <Compile Include="DTTexts.cs" />
     <Compile Include="Extension.cs" />
     <Compile Include="InterfaceMouseOperation.cs" />
     <Compile Include="LineAdorner.cs" />
