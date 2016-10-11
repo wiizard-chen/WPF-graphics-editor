@@ -52,8 +52,10 @@ namespace ToolTray
         {
             var layer = AdornerLayer.GetAdornerLayer(this.canvas);
             var adorner = new LineAdorner(tline.line,tline.StartPoint,tline.EndPoint);
-            adorner.ElementSizeChanged +=tline.ResizeLine;
+            adorner.ElementStartChanged += tline.StartResize;
+            adorner.ElementEndChanged += tline.EndResize;
             layer.Add(adorner);
+            //adorner.Visibility = Visibility.Hidden;
         }
     }
 }

@@ -28,7 +28,7 @@ namespace ToolTray
         private Point startpoint;
         private Point endpoint;
         private Thumb Start, End;
-        //private Thumb mov;
+        private Thumb mov;
         private VisualCollection visCollec;
 
         public FrameworkElement Element
@@ -39,16 +39,17 @@ namespace ToolTray
             }
         }
 
-        public event EventHandler ElementSizeChanged;
+        public event EventHandler ElementStartChanged;
+        public event EventHandler ElementEndChanged;
 
 
-        public LineAdorner(UIElement adorned,Point start,Point end) : base(adorned)
+        public LineAdorner(UIElement adorned, Point start, Point end) : base(adorned)
         {
             startpoint = start;
             endpoint = end;
             visCollec = new VisualCollection(this);
-            visCollec.Add(Start=getReizeThumb());
-            visCollec.Add(End=getReizeThumb());
+            visCollec.Add(Start = getReizeThumb(HorizontalAlignment.Left, VerticalAlignment.Top));
+            visCollec.Add(End = getReizeThumb(HorizontalAlignment.Right, VerticalAlignment.Bottom));
             //visCollec.Add(mov);
         }
 
@@ -56,12 +57,12 @@ namespace ToolTray
         {
             double offset = THUMB_SIZE / 2;
             Size size = new Size(THUMB_SIZE, THUMB_SIZE);
-            Start.Arrange(new Rect(new Point(startpoint.X-offset,startpoint.Y-offset), size));
+            Start.Arrange(new Rect(new Point(startpoint.X - offset, startpoint.Y - offset), size));
             End.Arrange(new Rect(new Point(endpoint.X - offset, endpoint.Y - offset), size));
             return finalSize;
         }
 
-        private Thumb getReizeThumb()
+        private Thumb getReizeThumb(HorizontalAlignment hoa, VerticalAlignment vra)
         {
             Brush b;
             b = GetRect();
@@ -70,8 +71,10 @@ namespace ToolTray
                 Background = Brushes.Red,
                 Width = THUMB_SIZE,
                 Height = THUMB_SIZE,
-                HorizontalAlignment = HorizontalAlignment.Center,
-                VerticalAlignment = VerticalAlignment.Center,
+
+                HorizontalAlignment = hoa,
+                VerticalAlignment = vra,
+
                 Template = new ControlTemplate(typeof(Thumb))
                 {
                     VisualTree = getRectangleFactory(b)
@@ -80,8 +83,20 @@ namespace ToolTray
             thumb.DragDelta += (s, e) =>
              {
                  Point point = new Point(e.HorizontalChange, e.VerticalChange);
-                 if (ElementSizeChanged != null)
-                     ElementSizeChanged(point, EventArgs.Empty);
+
+                 switch (thumb.VerticalAlignment)
+                 {
+                     case VerticalAlignment.Top:
+                         this.startpoint.Offset(e.HorizontalChange, e.VerticalChange);
+                         if (ElementStartChanged != null)
+                             ElementStartChanged(point, EventArgs.Empty);
+                         break;
+                     case VerticalAlignment.Bottom:
+                         this.endpoint.Offset(e.HorizontalChange, e.VerticalChange);
+                         if (ElementEndChanged != null)
+                             ElementEndChanged(point, EventArgs.Empty);
+                         break;
+                 }
              };
             return thumb;
         }
@@ -93,7 +108,6 @@ namespace ToolTray
             fef.SetValue(Rectangle.FillProperty, back);
             return fef;
         }
-
 
         private Brush GetRect()
         {

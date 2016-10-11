@@ -64,12 +64,20 @@ namespace ToolTray
             line.Y2 = point.Y;
         }
 
-        public void ResizeLine(object sender, EventArgs e)
+        public void StartResize(object sender, EventArgs e)
         {
             if (sender == null) return;
             Point point = (Point)sender;
-            line.X1 = point.X;
-            line.Y1 = point.Y;
+            line.X1 = line.X1+point.X;
+            line.Y1 = line.Y1+ point.Y;
+        }
+
+        public void EndResize(object sender, EventArgs e)
+        {
+            if (sender == null) return;
+            Point point = (Point)sender;
+            line.X2 = line.X2 + point.X;
+            line.Y2 = line.Y2 + point.Y;
         }
     }
 }
