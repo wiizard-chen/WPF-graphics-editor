@@ -20,11 +20,13 @@ namespace ToolTray
 
         public Path rectangle { get; set; }
 
+        public Rectangle trect { get; set; }
+
         public Double Width { get; set; }
 
         public Double Height { get; set; }
 
-        public Canvas Parentcanvas;
+        public Grid Parentcanvas;
 
         public TRectangle(Point point)
         {
@@ -44,10 +46,12 @@ namespace ToolTray
 
             rectangle = new Path();
             rectangle.Stroke = System.Windows.Media.Brushes.LightSteelBlue;
-            rectangle.StrokeThickness = 8;
+            rectangle.StrokeThickness = 4;
             rectangle.Tag = this;
             rectangle.Data = pathGemetry;
+            // this.trect = new Rectangle() { Width = 0, Height = 0 };
         }
+
 
         public void ChangeRectangle(Point point)
         {
@@ -68,30 +72,68 @@ namespace ToolTray
 
 
 
-        public Canvas NewCanvas()
+        public Grid NewCanvas()
         {
-            this.GetProperty();
-            this.Parentcanvas = new Canvas();
-            this.Parentcanvas.Width = this.Width+5;
-            this.Parentcanvas.Height = this.Height+5;
-            this.Parentcanvas.Children.Add(rectangle);
+            this.ChangeRectangle();
+
+            this.Parentcanvas = new Grid();
+            this.Parentcanvas.Width = this.Width;
+            this.Parentcanvas.Height = this.Height;
+            this.Parentcanvas.Children.Add(trect);
 
             return Parentcanvas;
         }
 
-        private void GetProperty()
+        private void ChangeRectangle()
         {
             PolyLineSegment line = this.rectangle.GetSegment();
             this.Width = Math.Abs(line.Points[0].X - line.Points[2].X);
             this.Height = Math.Abs(line.Points[0].Y - line.Points[2].Y);
-            if (line.Points[0].X < line.Points[2].X && line.Points[0].Y < line.Points[2].Y)
+            if (line.Points[0].X < line.Points[2].X)
             {
-                this.StartPosition = line.Points[2];
+                if (line.Points[0].Y < line.Points[2].Y)
+                    this.StartPosition = line.Points[0];//ok
+                else
+                    this.StartPosition = line.Points[3];
             }
             else
             {
-                this.StartPosition = line.Points[0];
+                if (line.Points[0].Y < line.Points[2].Y)
+                    this.StartPosition = line.Points[1];//ok
+                else
+                    this.StartPosition = line.Points[2];
             }
+            trect = new Rectangle();
+            trect.Stroke = Brushes.LightSteelBlue;
+            trect.StrokeThickness = 4;
+            trect.Tag = this;
+            trect.Stretch = Stretch.Fill;
+
+            //List<Point> list = new List<Point>();
+            //for (int i = 0; i < line.Points.Count; i++)
+            //{
+            //    Point p = line.Points[i];
+            //    p.Offset(-this.StartPosition.Value.X, -this.StartPosition.Value.Y);
+            //    list.Add(p);
+            //}
+
+            //PolyLineSegment polyLineSegment = new PolyLineSegment();
+            //polyLineSegment.Points = new PointCollection(list);
+
+            //PathFigure pathFigure = new PathFigure();
+            //pathFigure.IsClosed = true;
+            //pathFigure.StartPoint = list.First();
+            //pathFigure.Segments.Add(polyLineSegment);
+
+            //PathGeometry pathGemetry = new PathGeometry();
+            //pathGemetry.Figures.Add(pathFigure);
+
+            //rectangle = new Path();
+            //rectangle.Stroke = System.Windows.Media.Brushes.LightSteelBlue;
+            //rectangle.StrokeThickness = 4;
+            //rectangle.Tag = this;
+            //rectangle.Stretch = Stretch.Fill;
+            //rectangle.Data = pathGemetry;
         }
     }
 }

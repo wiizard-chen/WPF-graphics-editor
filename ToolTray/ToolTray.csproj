@@ -44,10 +44,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CanvasAdorner.cs" />
+    <Compile Include="DTLine.cs" />
+    <Compile Include="DTLines.cs" />
     <Compile Include="DTRectangle.cs" />
     <Compile Include="DTRectangles.cs" />
     <Compile Include="Extension.cs" />
     <Compile Include="InterfaceMouseOperation.cs" />
+    <Compile Include="LineAdorner.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

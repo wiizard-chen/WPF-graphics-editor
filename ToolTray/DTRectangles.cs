@@ -9,7 +9,7 @@ using System.Windows.Shapes;
 
 namespace ToolTray
 {
-    public class DTRectangles : Canvas, IDWMouseOperation
+    public class DTRectangles : IDWMouseOperation
     {
         public Point? MousePosition { get; set; }
 
@@ -55,10 +55,9 @@ namespace ToolTray
             Canvas.SetTop(trectangle.Parentcanvas, trectangle.StartPosition.Value.Y);
             Canvas.SetLeft(trectangle.Parentcanvas, trectangle.StartPosition.Value.X);
 
-            var layer = AdornerLayer.GetAdornerLayer(trectangle.Parentcanvas);
+            var layer = AdornerLayer.GetAdornerLayer(this.canvas);
             var adorner = new CanvasAdorner(trectangle.Parentcanvas);
             layer.Add(adorner);
-            TESTCANVAS();
         }
 
         public void TESTCANVAS()

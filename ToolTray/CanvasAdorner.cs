@@ -1,15 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Windows.Controls.Primitives;
 using System.ComponentModel;
@@ -69,6 +63,7 @@ namespace ToolTray
             visCollec.Add(br = GetResizeThumb(Cursors.SizeNWSE, HorizontalAlignment.Right, VerticalAlignment.Bottom));
             visCollec.Add(mov = GetMoveThumb());
         }
+
         #endregion
 
 
@@ -83,7 +78,7 @@ namespace ToolTray
             bl.Arrange(new Rect(new Point(-offset, AdornedElement.RenderSize.Height - offset), sz));
             br.Arrange(new Rect(new Point(AdornedElement.RenderSize.Width - offset, AdornedElement.RenderSize.Height - offset), sz));
             //mov.Arrange(new Rect(new Point(AdornedElement.RenderSize.Width / 2 - THUMB_SIZE / 2, -MOVE_OFFSET), sz));
-            mov.Arrange(new Rect(new Point(AdornedElement.RenderSize.Width / 2, AdornedElement.RenderSize.Height/2 ), sz));
+            mov.Arrange(new Rect(new Point(AdornedElement.RenderSize.Width / 2-offset, AdornedElement.RenderSize.Height/2-offset), sz));
             Debug.WriteLine(AdornedElement.RenderSize.Width);
             Debug.WriteLine(AdornedElement.RenderSize.Height);
 
@@ -156,8 +151,8 @@ namespace ToolTray
                 Background = Brushes.Red,
                 Width = THUMB_SIZE,
                 Height = THUMB_SIZE,
-                HorizontalAlignment = HorizontalAlignment.Center,
-                VerticalAlignment = VerticalAlignment.Center,
+                HorizontalAlignment = hor,
+                VerticalAlignment = ver,
                 Cursor = cur,
                 Template = new ControlTemplate(typeof(Thumb))
                 {
@@ -210,11 +205,6 @@ namespace ToolTray
             };
             return thumb;
         }
-
-        //private Thumb GetResizeThumb(Cursor cur,Point point)
-        //{
-            
-        //}
 
         #region 装饰器的刷子
 

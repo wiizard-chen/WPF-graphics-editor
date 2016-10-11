@@ -115,7 +115,7 @@ namespace graphiceditor
                 var element = AdornedElement as FrameworkElement;
                 if (element == null)
                     return;
-
+                
                 Canvas.SetLeft(element, Canvas.GetLeft(element) + e.HorizontalChange);
                 Canvas.SetTop(element, Canvas.GetTop(element) + e.VerticalChange);
                 if (ElementPositionChanged != null)
