@@ -23,7 +23,7 @@ namespace WpfApplication1
         public MainWindow()
         {
             InitializeComponent();
-            var test = new DTLines(this.canvas);
+            var test = new DTTexts(this.canvas);
             Mouse.AddMouseDownHandler(this.canvas, test.DWMouseDown);
             Mouse.AddMouseMoveHandler(this.canvas, test.DWMouseMove);
             Mouse.AddMouseUpHandler(this.canvas, test.DWMouseUp);

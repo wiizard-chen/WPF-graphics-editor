@@ -167,8 +167,6 @@ namespace graphiceditor.Tools
             this.Canvas.Children.Add(test);
             System.Windows.Controls.Canvas.SetTop(test,rect.StartPosition.X);
             System.Windows.Controls.Canvas.SetLeft(test, rect.StartPosition.Y);
-
-
             var layer = AdornerLayer.GetAdornerLayer(test);
             var adorner = new CanvasAdorner(test);
             layer.Add(adorner);

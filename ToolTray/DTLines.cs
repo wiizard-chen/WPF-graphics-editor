@@ -1,11 +1,7 @@
-﻿using System;
-using System.Diagnostics;
-using System.Text;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Shapes;
 
 namespace ToolTray
 {

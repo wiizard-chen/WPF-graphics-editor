@@ -9,9 +9,6 @@
         Height="400"
         mc:Ignorable="d">
     <Grid>
-
-
-
         <Canvas x:Name="workspace"
                 Grid.Row="0"
                 Visibility="Visible">
@@ -36,13 +33,15 @@
                         Margin="0"
                         Background="White"
                         ClipToBounds="True">
-                    <Grid Canvas.Left="20"
+                    <!--<Grid Canvas.Left="20"
                           Canvas.Top="20"
                           Width="100"
                           Height="100">
-                        <TextBox BorderThickness="0,0,0,1" Text="hello" />
-                        <!--<Line Stroke="Black" X1="0" X2="0" Y1="0" Y2="50"  Width="50" Stretch="Fill"></Line>-->
-                    </Grid>
+                        <TextBlock Text="hellohellohellohellohellohellohellohellohellohellohellohellohellohellohello" TextWrapping="Wrap" />
+                    -->
+                    <!--<Line Stroke="Black" X1="0" X2="0" Y1="0" Y2="50"  Width="50" Stretch="Fill"></Line>-->
+                    <!--
+                    </Grid>-->
                 </Canvas>
             </Border>
 
