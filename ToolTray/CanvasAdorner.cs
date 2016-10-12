@@ -115,7 +115,7 @@ namespace ToolTray
                 if (ElementPositionChanged != null)
                     ElementPositionChanged(new Point(Canvas.GetLeft(element), Canvas.GetTop(element)), EventArgs.Empty);
             };
-
+            
             return thumb;
         }
         private Thumb GetResizeThumb(Cursor cur, HorizontalAlignment hor, VerticalAlignment ver)
