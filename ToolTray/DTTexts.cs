@@ -10,17 +10,14 @@ namespace ToolTray
     {
         public void DWMouseDown(object sender, MouseButtonEventArgs e)
         {
-            throw new NotImplementedException();
         }
 
         public void DWMouseMove(object sender, MouseEventArgs e)
         {
-            throw new NotImplementedException();
         }
 
         public void DWMouseUp(object sender, MouseButtonEventArgs e)
         {
-            throw new NotImplementedException();
         }
     }
 }

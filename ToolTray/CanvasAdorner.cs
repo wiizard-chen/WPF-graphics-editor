@@ -77,9 +77,8 @@ namespace ToolTray
             br.Arrange(new Rect(new Point(AdornedElement.RenderSize.Width - offset, AdornedElement.RenderSize.Height - offset), sz));
             //mov.Arrange(new Rect(new Point(AdornedElement.RenderSize.Width / 2 - THUMB_SIZE / 2, -MOVE_OFFSET), sz));
             mov.Arrange(new Rect(new Point(AdornedElement.RenderSize.Width / 2-offset, AdornedElement.RenderSize.Height/2-offset), sz));
-            Debug.WriteLine(AdornedElement.RenderSize.Width);
-            Debug.WriteLine(AdornedElement.RenderSize.Height);
-
+            //Debug.WriteLine(AdornedElement.RenderSize.Width);
+            //Debug.WriteLine(AdornedElement.RenderSize.Height);
             return finalSize;
         }
 

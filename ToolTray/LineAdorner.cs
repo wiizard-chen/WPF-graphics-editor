@@ -28,7 +28,7 @@ namespace ToolTray
         private Point startpoint;
         private Point endpoint;
         private Thumb Start, End;
-        private Thumb mov;
+        private Thumb Move;
         private VisualCollection visCollec;
 
         public FrameworkElement Element
@@ -41,7 +41,7 @@ namespace ToolTray
 
         public event EventHandler ElementStartChanged;
         public event EventHandler ElementEndChanged;
-
+        public event EventHandler ElementMove;
 
         public LineAdorner(UIElement adorned, Point start, Point end) : base(adorned)
         {
@@ -50,7 +50,7 @@ namespace ToolTray
             visCollec = new VisualCollection(this);
             visCollec.Add(Start = getReizeThumb(HorizontalAlignment.Left, VerticalAlignment.Top));
             visCollec.Add(End = getReizeThumb(HorizontalAlignment.Right, VerticalAlignment.Bottom));
-            //visCollec.Add(mov);
+            visCollec.Add(Move = getMoveThumb());
         }
 
         protected override Size ArrangeOverride(Size finalSize)
@@ -59,6 +59,11 @@ namespace ToolTray
             Size size = new Size(THUMB_SIZE, THUMB_SIZE);
             Start.Arrange(new Rect(new Point(startpoint.X - offset, startpoint.Y - offset), size));
             End.Arrange(new Rect(new Point(endpoint.X - offset, endpoint.Y - offset), size));
+            Move.Arrange(new Rect(
+                new Point(
+                   startpoint.X-(startpoint.X - endpoint.X) / 2 - offset,
+                    startpoint.Y - (startpoint.Y - endpoint.Y) / 2 - offset),
+                    size));
             return finalSize;
         }
 
@@ -98,6 +103,35 @@ namespace ToolTray
                          break;
                  }
              };
+            thumb.DragCompleted += (s, e) =>
+              {
+
+              };
+            return thumb;
+        }
+
+        private Thumb getMoveThumb()
+        {
+            Brush b = GetMoveEllipseBack();
+            var thumb = new Thumb()
+            {
+                Width = THUMB_SIZE,
+                Height = THUMB_SIZE,
+                Cursor = Cursors.SizeAll,
+                Template = new ControlTemplate(typeof(Thumb))
+                {
+                    VisualTree = getFactory(b)
+                }
+            };
+            thumb.DragDelta += (s, e) =>
+             {
+                 Point point = new Point(e.HorizontalChange, e.VerticalChange);
+                 this.startpoint.Offset(e.HorizontalChange, e.VerticalChange);
+                 this.endpoint.Offset(e.HorizontalChange, e.VerticalChange);
+
+                 if (ElementMove != null)
+                     ElementMove(point, EventArgs.Empty);
+             };
             return thumb;
         }
 
@@ -109,10 +143,26 @@ namespace ToolTray
             return fef;
         }
 
+        private FrameworkElementFactory getFactory(Brush back)
+        {
+            back.Opacity = 0.6;
+            var fef = new FrameworkElementFactory(typeof(Ellipse));
+            fef.SetValue(Ellipse.FillProperty, back);
+            fef.SetValue(Ellipse.StrokeProperty, Brushes.Transparent);
+            fef.SetValue(Ellipse.StrokeThicknessProperty, (double)1);
+            return fef;
+        }
+
         private Brush GetRect()
         {
             string lan = "M 0,0 h 5 M 0,0 v 5 M 0,5 h 5 M 5,0 v 5";
             return GetBrush(lan, 1);
+        }
+
+        private Brush GetMoveEllipseBack()
+        {
+            string lan = "M 0,5 h 10 M 5,0 v 10";
+            return GetBrush(lan, 2);
         }
 
         private static Brush GetBrush(string lan, double w)
