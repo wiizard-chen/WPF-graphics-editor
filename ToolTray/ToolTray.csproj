@@ -51,7 +51,9 @@
     <Compile Include="DTText.cs" />
     <Compile Include="DTTexts.cs" />
     <Compile Include="Extension.cs" />
-    <Compile Include="InterfaceMouseOperation.cs" />
+    <Compile Include="Interface\IAdroner.cs" />
+    <Compile Include="Interface\IDWMouseOperation.cs" />
+    <Compile Include="Interface\IDynamicShape.cs" />
     <Compile Include="LineAdorner.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TextAdroner.cs" />
