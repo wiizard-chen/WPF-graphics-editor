@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using System.Diagnostics;
+using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Documents;
 using System.Windows.Input;
@@ -24,6 +25,7 @@ namespace ToolTray
         {
             if (e.ChangedButton == MouseButton.Left)
             {
+                //Debug.WriteLine(dynamicShape ==null);
                 this.MousePosition = Mouse.GetPosition(this.canvas);
                 if (dynamicShape != null)
                     (dynamicShape as TText).ReadOnlyStatus();
@@ -38,7 +40,6 @@ namespace ToolTray
                 Point point = e.GetPosition(this.canvas);
                 if (IsNew)
                 {
-
                     dynamicShape = new TText(this.MousePosition.Value, this.canvas);
                     this.IsNew = false;
                 }

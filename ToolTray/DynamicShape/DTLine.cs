@@ -41,7 +41,6 @@ namespace ToolTray
             }
         }
 
-
         public Grid Parentcanvas;
         #endregion
 
