@@ -1,21 +1,25 @@
-﻿using System.Windows;
+﻿using System;
+using System.Diagnostics;
+using System.Text;
+using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Documents;
 using System.Windows.Input;
+using System.Windows.Shapes;
 
 namespace ToolTray
 {
-    public class DTTexts : IDWMouseOperation
+    public class DTRectangles : IDWMouseOperation
     {
         public Point? MousePosition { get; set; }
 
-        private TText tText;
+        private IDynamicShape dynamicShape;
 
         public Canvas canvas;
 
         private bool IsNew;
 
-        public DTTexts(Canvas parent)
+        public DTRectangles(Canvas parent)
         {
             this.canvas = parent;
         }
@@ -33,27 +37,18 @@ namespace ToolTray
         {
             if (e.LeftButton == MouseButtonState.Pressed && this.MousePosition.HasValue)
             {
-                Point p = e.GetPosition(this.canvas);
-                if (IsNew)
+                Point point = e.GetPosition(this.canvas);
+                if (this.IsNew)
                 {
-                    tText = new TText(p);
-                    this.canvas.Children.Add(tText.TextRegion);
+                    dynamicShape = new TRectangle(this.MousePosition.Value, this.canvas);
                     this.IsNew = false;
                 }
-                tText.ChangeSelect(p);
+                dynamicShape.GraphicDistortion(point);
             }
         }
-
         public void DWMouseUp(object sender, MouseButtonEventArgs e)
         {
-            this.canvas.Children.Remove(tText.TextRegion);
-            tText.NewCanvas();
-            this.canvas.Children.Add(tText.Parentcanvas);
-            Canvas.SetTop(tText.Parentcanvas, tText.StartPosition.Value.Y);
-            Canvas.SetLeft(tText.Parentcanvas, tText.StartPosition.Value.X);
-            var layer = AdornerLayer.GetAdornerLayer(this.canvas);
-            var adorner = new CanvasAdorner(tText.Parentcanvas);
-            layer.Add(adorner);
+            dynamicShape.GraphicDetermine();
         }
     }
 }

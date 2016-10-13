@@ -3,16 +3,20 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Shapes;
 using System.Windows.Media;
+using System.Windows.Documents;
 
 namespace ToolTray
 {
-    public class TText
+    public class TText : IAdroner, IDynamicShape
     {
-        public Point? StartPosition { get; set; }
+        #region 属性
+        public Point StartPosition { get; set; }
 
         public Point LocalPosition { get; set; }
 
-        private Point? MousePosition { get; set; }
+        private Point MousePosition { get; set; }
+
+        public Path TextRegion { get; set; }
 
         public TextBox textBox { get; set; }
 
@@ -22,11 +26,17 @@ namespace ToolTray
 
         public Double Height { get; set; }
 
-        public Grid Parentcanvas { get; set; }
+        public Grid Container { get; set; }
 
-        public Path TextRegion{ get; set; }
+        public Canvas ParentCanvas { get; set; }
 
-        public TText(Point point)
+        public TextAdroner TextAdroner { get; set; }
+        #endregion
+
+
+        #region 构造函数
+
+        public TText(Point point, Canvas parentcanvas)
         {
             this.StartPosition = point;
             this.MousePosition = point;
@@ -39,21 +49,32 @@ namespace ToolTray
             pathFigure.IsClosed = true;
             pathFigure.StartPoint = point;
             pathFigure.Segments.Add(polyLineSegment);
+
             PathGeometry pathGemetry = new PathGeometry();
             pathGemetry.Figures.Add(pathFigure);
 
             TextRegion = new Path();
-            TextRegion.StrokeDashArray = new DoubleCollection() { 2, 3 };
+            TextRegion.StrokeDashArray = new DoubleCollection() { 2, 3 };//虚线框
             TextRegion.Stroke = Brushes.Black;
             TextRegion.StrokeThickness = 1;
             TextRegion.Data = pathGemetry;
+
+            this.ParentCanvas = parentcanvas;
+            this.ParentCanvas.Children.Add(this.TextRegion);
         }
 
-        public void ChangeSelect(Point point)
+        #endregion
+
+        public IDynamicShape GetNewShape(Point point, Canvas canvas)
+        {
+            return this;
+        }
+
+        public void GraphicDistortion(Point point)
         {
             PolyLineSegment line = this.TextRegion.GetSegment();
-            double w = point.X - this.MousePosition.Value.X;
-            double h = point.Y - this.MousePosition.Value.Y;
+            double w = point.X - this.MousePosition.X;
+            double h = point.Y - this.MousePosition.Y;
             Point p1 = line.Points[1];
             Point p2 = line.Points[2];
             Point p3 = line.Points[3];
@@ -66,17 +87,26 @@ namespace ToolTray
             this.MousePosition = point;
         }
 
-        public Grid NewCanvas()
+        public void GraphicDetermine()
         {
+            this.ParentCanvas.Children.Remove(this.TextRegion);
             this.ChangeText();
-            this.Parentcanvas = new Grid();
-            this.Parentcanvas.Width = this.Width;
-            this.Parentcanvas.Height = this.Height;
-            this.Parentcanvas.Children.Add(textBlock);
-            return Parentcanvas;
+            this.Container = new Grid();
+            this.Container.Width = this.Width;
+            this.Container.Height = this.Height;
+            if (this.Width > 10 && this.Height > 10)
+            {
+                this.Container.Children.Add(textBlock);
+                this.ParentCanvas.Children.Add(this.Container);
+                Canvas.SetTop(this.Container, this.StartPosition.Y);
+                Canvas.SetLeft(this.Container, this.StartPosition.X);
+                var layer = AdornerLayer.GetAdornerLayer(this.ParentCanvas);
+                TextAdroner = new TextAdroner(this.Container);
+                layer.Add(TextAdroner);
+            }
         }
 
-        private  void ChangeText()
+        private void ChangeText()
         {
             PolyLineSegment line = this.TextRegion.GetSegment();
             this.Width = Math.Abs(line.Points[0].X - line.Points[2].X);
@@ -99,5 +129,18 @@ namespace ToolTray
             this.textBlock.FontSize = 30;
             this.textBlock.Text = "what's wrong?!";
         }
+        #region 装饰器
+
+        public void AdronerVisble()
+        {
+            this.TextAdroner.Visibility = Visibility.Visible;
+        }
+
+        public void AdronerHidden()
+        {
+            this.TextAdroner.Visibility = Visibility.Hidden;
+        }
+
+        #endregion
     }
 }

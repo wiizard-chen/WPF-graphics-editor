@@ -11,7 +11,7 @@ using System.Diagnostics;
 
 namespace ToolTray
 {
-    public class CanvasAdorner : Adorner, INotifyPropertyChanged
+    public class RectangleAdorner : Adorner, INotifyPropertyChanged
     {
         #region 接口实现
         public event PropertyChangedEventHandler PropertyChanged;
@@ -36,7 +36,7 @@ namespace ToolTray
         #region 业务属性
         private const double THUMB_SIZE = 12;
         private const double MINIMAL_SIZE = 20;
-        private const double MOVE_OFFSET = 8;//20;
+        private const double MOVE_OFFSET = 8;
         private Thumb tl, tr, bl, br;
         private Thumb mov;
         private VisualCollection visCollec;
@@ -53,7 +53,7 @@ namespace ToolTray
         #endregion
 
         #region 构造函数
-        public CanvasAdorner(UIElement adorned)
+        public RectangleAdorner(UIElement adorned)
             : base(adorned)
         {
             visCollec = new VisualCollection(this);
@@ -75,10 +75,7 @@ namespace ToolTray
             tr.Arrange(new Rect(new Point(AdornedElement.RenderSize.Width - offset, -offset), sz));
             bl.Arrange(new Rect(new Point(-offset, AdornedElement.RenderSize.Height - offset), sz));
             br.Arrange(new Rect(new Point(AdornedElement.RenderSize.Width - offset, AdornedElement.RenderSize.Height - offset), sz));
-            //mov.Arrange(new Rect(new Point(AdornedElement.RenderSize.Width / 2 - THUMB_SIZE / 2, -MOVE_OFFSET), sz));
             mov.Arrange(new Rect(new Point(AdornedElement.RenderSize.Width / 2-offset, AdornedElement.RenderSize.Height/2-offset), sz));
-            //Debug.WriteLine(AdornedElement.RenderSize.Width);
-            //Debug.WriteLine(AdornedElement.RenderSize.Height);
             return finalSize;
         }
 

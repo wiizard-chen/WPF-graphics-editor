@@ -7,6 +7,8 @@ namespace ToolTray
 {
     public class TLine
     {
+        #region 属性
+
         public Point? StartPosition { get; set; }
 
         public Point LocalPosition { get; set; }
@@ -41,6 +43,7 @@ namespace ToolTray
 
 
         public Grid Parentcanvas;
+        #endregion
 
         public TLine(Point point)
         {

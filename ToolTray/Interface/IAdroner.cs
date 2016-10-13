@@ -5,9 +5,15 @@ using System.Text;
 
 namespace ToolTray
 {
-    public interface IAdroner
+    internal interface IAdroner
     {
+        /// <summary>
+        /// 装饰器显示
+        /// </summary>
         void AdronerVisble();
+        /// <summary>
+        /// 装饰器隐藏
+        /// </summary>
         void AdronerHidden();
     }
 }
