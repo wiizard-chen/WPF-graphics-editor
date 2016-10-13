@@ -33,15 +33,27 @@ namespace ToolTray
         public TextAdroner TextAdroner { get; set; }
         #endregion
 
-
         #region 构造函数
 
         public TText(Point point, Canvas parentcanvas)
         {
             this.StartPosition = point;
             this.MousePosition = point;
-            this.textBlock = new TextBlock();
-            this.textBox = new TextBox();
+
+            this.textBlock = new TextBlock()
+            {
+                Background = Brushes.Transparent,
+                TextWrapping = TextWrapping.Wrap,
+                FontSize = 30,
+                Visibility = Visibility.Hidden
+            };
+            this.textBox = new TextBox()
+            {
+                Background = Brushes.Transparent,
+                TextWrapping = TextWrapping.Wrap,
+                FontSize = 30,
+                Visibility = Visibility.Hidden
+            };
 
             PolyLineSegment polyLineSegment = new PolyLineSegment();
             polyLineSegment.Points = new PointCollection(new Point[] { point, point, point, point });
@@ -64,6 +76,8 @@ namespace ToolTray
         }
 
         #endregion
+
+        #region 动态变化
 
         public IDynamicShape GetNewShape(Point point, Canvas canvas)
         {
@@ -94,14 +108,18 @@ namespace ToolTray
             this.Container = new Grid();
             this.Container.Width = this.Width;
             this.Container.Height = this.Height;
+
             if (this.Width > 10 && this.Height > 10)
-            {
+            {//Ensure the size 
                 this.Container.Children.Add(textBlock);
+                this.Container.Children.Add(textBox);
+                textBox.Visibility = Visibility.Visible;
                 this.ParentCanvas.Children.Add(this.Container);
                 Canvas.SetTop(this.Container, this.StartPosition.Y);
                 Canvas.SetLeft(this.Container, this.StartPosition.X);
                 var layer = AdornerLayer.GetAdornerLayer(this.ParentCanvas);
                 TextAdroner = new TextAdroner(this.Container);
+                TextAdroner.EditStatus += WriteableStatus;
                 layer.Add(TextAdroner);
             }
         }
@@ -125,10 +143,25 @@ namespace ToolTray
                 else
                     this.StartPosition = line.Points[2];
             }
-            this.textBlock.TextWrapping = TextWrapping.Wrap;
-            this.textBlock.FontSize = 30;
-            this.textBlock.Text = "what's wrong?!";
         }
+
+        public void ReadOnlyStatus()
+        {
+            string str = this.textBox.Text;
+            this.textBlock.Text = str;
+            this.textBox.Visibility = Visibility.Hidden;
+            this.textBlock.Visibility = Visibility.Visible;
+        }
+
+        public void WriteableStatus(object sender, EventArgs e)
+        {
+            string str = this.textBlock.Text;
+            this.textBox.Text = str;
+            this.textBox.Visibility = Visibility.Visible;
+            this.textBlock.Visibility = Visibility.Hidden;
+        }
+        #endregion
+
         #region 装饰器
 
         public void AdronerVisble()

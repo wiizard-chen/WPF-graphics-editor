@@ -33,20 +33,11 @@
                         Margin="0"
                         Background="White"
                         ClipToBounds="True">
-                    <!--<Grid Canvas.Left="20"
-                          Canvas.Top="20"
-                          Width="100"
-                          Height="100">
-                        <TextBlock Text="hellohellohellohellohellohellohellohellohellohellohellohellohellohellohello" TextWrapping="Wrap" />
-                    -->
-                    <!--<Line Stroke="Black" X1="0" X2="0" Y1="0" Y2="50"  Width="50" Stretch="Fill"></Line>-->
-                    <!--
-                    </Grid>-->
+
+                    <Button Click="Button_Click">fucking christrmas</Button>
+
                 </Canvas>
             </Border>
-
         </Canvas>
-
-
     </Grid>
 </Window>

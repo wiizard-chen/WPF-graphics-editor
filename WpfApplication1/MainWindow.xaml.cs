@@ -27,5 +27,10 @@ namespace WpfApplication1
             Mouse.AddMouseMoveHandler(this.canvas, test.DWMouseMove);
             Mouse.AddMouseUpHandler(this.canvas, test.DWMouseUp);
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

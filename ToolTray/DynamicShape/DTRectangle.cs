@@ -64,6 +64,7 @@ namespace ToolTray
         #endregion
 
         #region 动态变化
+
         public IDynamicShape GetNewShape(Point point, Canvas canvas)
         {
             return this;
@@ -104,6 +105,7 @@ namespace ToolTray
                 layer.Add(RectAdroner);
             }
         }
+
         private void ChangeRectangle()
         {
             PolyLineSegment line = this.rectangle.GetSegment();
@@ -129,6 +131,7 @@ namespace ToolTray
             trect.Tag = this;
             trect.Stretch = Stretch.Fill;
         }
+
         #endregion
 
         #region 装饰器

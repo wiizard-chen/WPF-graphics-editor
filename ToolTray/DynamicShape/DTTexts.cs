@@ -25,6 +25,8 @@ namespace ToolTray
             if (e.ChangedButton == MouseButton.Left)
             {
                 this.MousePosition = Mouse.GetPosition(this.canvas);
+                if (dynamicShape != null)
+                    (dynamicShape as TText).ReadOnlyStatus();
                 this.IsNew = true;
             }
         }
@@ -36,6 +38,7 @@ namespace ToolTray
                 Point point = e.GetPosition(this.canvas);
                 if (IsNew)
                 {
+
                     dynamicShape = new TText(this.MousePosition.Value, this.canvas);
                     this.IsNew = false;
                 }
@@ -45,7 +48,11 @@ namespace ToolTray
 
         public void DWMouseUp(object sender, MouseButtonEventArgs e)
         {
-            dynamicShape.GraphicDetermine();
+            if (e.GetPosition(this.canvas).X == this.MousePosition.Value.X
+                && e.GetPosition(this.canvas).Y == this.MousePosition.Value.Y)
+            { }
+            else
+                dynamicShape.GraphicDetermine();
         }
     }
 }

@@ -31,6 +31,8 @@ namespace ToolTray
         /// 大小改变
         /// </summary>
         public event EventHandler ElementSizeChanged;
+
+        public event EventHandler EditStatus;
         #endregion
 
         #region 业务属性
@@ -39,6 +41,7 @@ namespace ToolTray
         private const double MOVE_OFFSET = 8;//20;
         private Thumb tl, tr, bl, br;
         private Thumb mov;
+        private Thumb edit;
         private VisualCollection visCollec;
         /// <summary>
         /// 内部控件
@@ -52,6 +55,8 @@ namespace ToolTray
         }
         #endregion
 
+        #region 构造方法
+
         public TextAdroner(UIElement adorned)
             : base(adorned)
         {
@@ -61,6 +66,7 @@ namespace ToolTray
             visCollec.Add(bl = GetResizeThumb(Cursors.SizeNESW, HorizontalAlignment.Left, VerticalAlignment.Bottom));
             visCollec.Add(br = GetResizeThumb(Cursors.SizeNWSE, HorizontalAlignment.Right, VerticalAlignment.Bottom));
             visCollec.Add(mov = GetMoveThumb());
+            visCollec.Add(edit = GetEditThumb());
         }
 
         protected override Size ArrangeOverride(Size finalSize)
@@ -71,10 +77,8 @@ namespace ToolTray
             tr.Arrange(new Rect(new Point(AdornedElement.RenderSize.Width - offset, -offset), sz));
             bl.Arrange(new Rect(new Point(-offset, AdornedElement.RenderSize.Height - offset), sz));
             br.Arrange(new Rect(new Point(AdornedElement.RenderSize.Width - offset, AdornedElement.RenderSize.Height - offset), sz));
-            //mov.Arrange(new Rect(new Point(AdornedElement.RenderSize.Width / 2 - THUMB_SIZE / 2, -MOVE_OFFSET), sz));
             mov.Arrange(new Rect(new Point(AdornedElement.RenderSize.Width / 2 - offset, AdornedElement.RenderSize.Height / 2 - offset), sz));
-            //Debug.WriteLine(AdornedElement.RenderSize.Width);
-            //Debug.WriteLine(AdornedElement.RenderSize.Height);
+            edit.Arrange(new Rect(new Point(AdornedElement.RenderSize.Width - 50 + offset, AdornedElement.RenderSize.Height + 10), new Size(50, 20)));
             return finalSize;
         }
 
@@ -111,7 +115,6 @@ namespace ToolTray
                 if (ElementPositionChanged != null)
                     ElementPositionChanged(new Point(Canvas.GetLeft(element), Canvas.GetTop(element)), EventArgs.Empty);
             };
-
             return thumb;
         }
 
@@ -200,6 +203,24 @@ namespace ToolTray
             return thumb;
         }
 
+        private Thumb GetEditThumb()
+        {
+            Thumb thumb = new Thumb()
+            {
+                Width = 50,
+                Height = 20,
+                Template = new ControlTemplate(typeof(Thumb))
+                {
+                    VisualTree = GetEditFactory()
+                }
+            };
+            return thumb;
+        }
+
+        #endregion
+
+        #region 工厂方法
+
         private FrameworkElementFactory GetFactory(Brush back)
         {
             back.Opacity = 0.6;
@@ -217,6 +238,22 @@ namespace ToolTray
             fef.SetValue(Rectangle.FillProperty, back);
             return fef;
         }
+
+        private FrameworkElementFactory GetEditFactory()
+        {
+            var fef = new FrameworkElementFactory(typeof(Button));
+            fef.SetValue(Button.ContentProperty, "编辑");
+            fef.AddHandler(Button.ClickEvent, new RoutedEventHandler(Button_Click));
+            return fef;
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            if (EditStatus != null)
+                EditStatus(this, EventArgs.Empty);
+        }
+
+        #endregion
 
         #region 装饰器的刷子
 
