@@ -46,6 +46,7 @@ namespace ToolTray
                 dynamicShape.GraphicDistortion(point);
             }
         }
+
         public void DWMouseUp(object sender, MouseButtonEventArgs e)
         {
             dynamicShape.GraphicDetermine();

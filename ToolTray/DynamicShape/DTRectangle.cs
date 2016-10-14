@@ -129,6 +129,7 @@ namespace ToolTray
             }
             trect = new Rectangle();
             trect.Stroke = Brushes.LightSteelBlue;
+            trect.Fill = Brushes.LightSteelBlue;
             trect.StrokeThickness = 4;
             trect.Tag = this;
             trect.Stretch = Stretch.Fill;

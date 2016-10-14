@@ -54,6 +54,7 @@
     <Compile Include="DynamicShape\DTTexts.cs" />
     <Compile Include="Extension.cs" />
     <Compile Include="Interface\IAdroner.cs" />
+    <Compile Include="Interface\IDWKeyboardOperation.cs" />
     <Compile Include="Interface\IDWMouseOperation.cs" />
     <Compile Include="Interface\IDynamicShape.cs" />
     <Compile Include="DynamicAdorner\LineAdorner.cs" />

@@ -9,7 +9,7 @@ namespace ToolTray
     {
         public Point? MousePosition { get; set; }
 
-        private TLine tline;
+        private IDynamicShape dynamicShape;
 
         public Canvas canvas;
 
@@ -33,33 +33,21 @@ namespace ToolTray
         {
             if (e.LeftButton == MouseButtonState.Pressed && this.MousePosition.HasValue)
             {
-                Point p = e.GetPosition(this.canvas);
-                if (IsNew)
+                Point point = e.GetPosition(this.canvas);
+                if (this.IsNew)
                 {
-                    tline = new TLine(this.MousePosition.Value);
-                    this.canvas.Children.Add(tline.line);
+                    dynamicShape = new TLine(this.MousePosition.Value, this.canvas);
                     this.IsNew = false;
                 }
-                tline.ChangeLine(p);
+                dynamicShape.GraphicDistortion(point);
             }
         }
 
         public void DWMouseUp(object sender, MouseButtonEventArgs e)
         {
-
-            //this.canvas.Children.Remove(tline.line);
-            //this.tline.NewCanvas();
-            //this.canvas.Children.Add(tline.Parentcanvas);
-            //Canvas.SetTop(tline.Parentcanvas, tline.StartPosition.Value.Y);
-            //Canvas.SetLeft(tline.Parentcanvas, tline.StartPosition.Value.X);
-
-            var layer = AdornerLayer.GetAdornerLayer(this.canvas);
-            var adorner = new LineAdorner(tline.line, tline.StartPoint, tline.EndPoint);
-            adorner.ElementStartChanged += tline.StartResize;
-            adorner.ElementEndChanged += tline.EndResize;
-            adorner.ElementMove += tline.MoveLine;
-            layer.Add(adorner);
-            //adorner.Visibility = Visibility.Hidden;
+            dynamicShape.GraphicDetermine();
         }
+
+
     }
 }

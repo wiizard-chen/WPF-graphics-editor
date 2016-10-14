@@ -23,7 +23,6 @@ namespace WpfApplication1
         public MainWindow()
         {
             InitializeComponent();
-           
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -33,6 +32,7 @@ namespace WpfApplication1
             Mouse.AddMouseDownHandler(this.canvas, test.DWMouseDown);
             Mouse.AddMouseMoveHandler(this.canvas, test.DWMouseMove);
             Mouse.AddMouseUpHandler(this.canvas, test.DWMouseUp);
+            Keyboard.AddPreviewKeyDownHandler(this, (test as IDWKeyboardOperation).DWKeyDown);
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
@@ -70,6 +70,26 @@ namespace WpfApplication1
             Mouse.AddMouseDownHandler(this.canvas, test.DWMouseDown);
             Mouse.AddMouseMoveHandler(this.canvas, test.DWMouseMove);
             Mouse.AddMouseUpHandler(this.canvas, test.DWMouseUp);
+        }
+
+        private void canvas_KeyDown(object sender, KeyEventArgs e)
+        {
+
+        }
+
+        private void Button_Click_4(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Button_Click_5(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Button_Click_6(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

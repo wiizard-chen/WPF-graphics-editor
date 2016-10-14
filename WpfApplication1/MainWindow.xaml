@@ -12,6 +12,7 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="*" />
             <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
         </Grid.RowDefinitions>
         <Canvas x:Name="workspace"
                 Grid.Row="0"
@@ -44,6 +45,12 @@
             <Button Click="Button_Click_1">rectangle</Button>
             <Button Click="Button_Click_2">text</Button>
             <Button Click="Button_Click_3">line</Button>
+        </StackPanel>
+
+        <StackPanel Grid.Row=" 2" Orientation="Horizontal">
+            <Button Click="Button_Click_4">open</Button>
+            <Button Click="Button_Click_5">new</Button>
+            <Button Click="Button_Click_6">save</Button>
         </StackPanel>
     </Grid>
 </Window>

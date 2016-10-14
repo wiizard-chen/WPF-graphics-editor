@@ -66,7 +66,7 @@ namespace ToolTray
             visCollec.Add(bl = GetResizeThumb(Cursors.SizeNESW, HorizontalAlignment.Left, VerticalAlignment.Bottom));
             visCollec.Add(br = GetResizeThumb(Cursors.SizeNWSE, HorizontalAlignment.Right, VerticalAlignment.Bottom));
             visCollec.Add(mov = GetMoveThumb());
-            visCollec.Add(edit = GetEditThumb());
+            //visCollec.Add(edit = GetEditThumb());
         }
 
         protected override Size ArrangeOverride(Size finalSize)
@@ -78,7 +78,7 @@ namespace ToolTray
             bl.Arrange(new Rect(new Point(-offset, AdornedElement.RenderSize.Height - offset), sz));
             br.Arrange(new Rect(new Point(AdornedElement.RenderSize.Width - offset, AdornedElement.RenderSize.Height - offset), sz));
             mov.Arrange(new Rect(new Point(AdornedElement.RenderSize.Width / 2 - offset, AdornedElement.RenderSize.Height / 2 - offset), sz));
-            edit.Arrange(new Rect(new Point(AdornedElement.RenderSize.Width - 50 + offset, AdornedElement.RenderSize.Height + 10), new Size(50, 20)));
+            //edit.Arrange(new Rect(new Point(AdornedElement.RenderSize.Width - 50 + offset, AdornedElement.RenderSize.Height + 10), new Size(50, 20)));
             return finalSize;
         }
 
