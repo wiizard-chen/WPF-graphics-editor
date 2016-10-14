@@ -61,6 +61,7 @@ namespace ToolTray
             this.ParentCanvas.Children.Add(this.rectangle);
 
         }
+
         #endregion
 
         #region 动态变化
@@ -129,7 +130,6 @@ namespace ToolTray
             }
             trect = new Rectangle();
             trect.Stroke = Brushes.LightSteelBlue;
-            trect.Fill = Brushes.LightSteelBlue;
             trect.StrokeThickness = 4;
             trect.Tag = this;
             trect.Stretch = Stretch.Fill;
