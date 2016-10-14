@@ -2,7 +2,7 @@
 
 namespace ToolTray
 {
-    internal interface IDWMouseOperation
+    public interface IDWMouseOperation
     {
         /// <summary>
         /// 鼠标按下事件

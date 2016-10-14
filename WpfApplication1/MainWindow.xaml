@@ -9,6 +9,10 @@
         Height="400"
         mc:Ignorable="d">
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="auto" />
+        </Grid.RowDefinitions>
         <Canvas x:Name="workspace"
                 Grid.Row="0"
                 Visibility="Visible">
@@ -32,12 +36,14 @@
                 <Canvas x:Name="canvas"
                         Margin="0"
                         Background="White"
-                        ClipToBounds="True">
-
-                    <Button Click="Button_Click">fucking christrmas</Button>
-
-                </Canvas>
+                        ClipToBounds="True" />
             </Border>
         </Canvas>
+        <StackPanel Grid.Row="1" Orientation="Horizontal">
+            <Button Click="Button_Click">select</Button>
+            <Button Click="Button_Click_1">rectangle</Button>
+            <Button Click="Button_Click_2">text</Button>
+            <Button Click="Button_Click_3">line</Button>
+        </StackPanel>
     </Grid>
 </Window>

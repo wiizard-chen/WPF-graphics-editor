@@ -48,6 +48,8 @@
     <Compile Include="DynamicShape\DTLines.cs" />
     <Compile Include="DynamicShape\DTRectangle.cs" />
     <Compile Include="DynamicShape\DTRectangles.cs" />
+    <Compile Include="DynamicShape\DTSelector.cs" />
+    <Compile Include="DynamicShape\DTSelectors.cs" />
     <Compile Include="DynamicShape\DTText.cs" />
     <Compile Include="DynamicShape\DTTexts.cs" />
     <Compile Include="Extension.cs" />

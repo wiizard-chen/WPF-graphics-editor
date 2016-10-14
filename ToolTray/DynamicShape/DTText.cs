@@ -111,6 +111,7 @@ namespace ToolTray
 
             if (this.Width > 10 && this.Height > 10)
             {//Ensure the size 
+                this.Container.Tag = this;
                 this.Container.Children.Add(textBlock);
                 this.Container.Children.Add(textBox);
                 textBox.Visibility = Visibility.Visible;
@@ -121,6 +122,7 @@ namespace ToolTray
                 TextAdroner = new TextAdroner(this.Container);
                 TextAdroner.EditStatus += WriteableStatus;
                 layer.Add(TextAdroner);
+                this.AdronerHidden();
             }
         }
 

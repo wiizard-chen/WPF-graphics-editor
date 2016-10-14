@@ -97,12 +97,14 @@ namespace ToolTray
             if (this.Width > 10 && this.Height > 10)
             {
                 this.Container.Children.Add(trect);
+                this.Container.Tag = this;
                 this.ParentCanvas.Children.Add(this.Container);
                 Canvas.SetTop(this.Container, this.StartPosition.Y);
                 Canvas.SetLeft(this.Container, this.StartPosition.X);
                 var layer = AdornerLayer.GetAdornerLayer(this.ParentCanvas);
                 RectAdroner = new RectangleAdorner(this.Container);
                 layer.Add(RectAdroner);
+                this.AdronerHidden();
             }
         }
 

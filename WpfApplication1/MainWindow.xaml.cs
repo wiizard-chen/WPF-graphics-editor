@@ -19,18 +19,57 @@ namespace WpfApplication1
     /// </summary>
     public partial class MainWindow : Window
     {
+        private IDWMouseOperation test;
         public MainWindow()
         {
             InitializeComponent();
-            var test = new DTTexts(this.canvas);
+           
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {//select
+            Remove();
+            test = new DTSelectors(this.canvas);
             Mouse.AddMouseDownHandler(this.canvas, test.DWMouseDown);
             Mouse.AddMouseMoveHandler(this.canvas, test.DWMouseMove);
             Mouse.AddMouseUpHandler(this.canvas, test.DWMouseUp);
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void Button_Click_1(object sender, RoutedEventArgs e)
         {
+            Remove();
+            test = new DTRectangles(this.canvas);
+            Mouse.AddMouseDownHandler(this.canvas, test.DWMouseDown);
+            Mouse.AddMouseMoveHandler(this.canvas, test.DWMouseMove);
+            Mouse.AddMouseUpHandler(this.canvas, test.DWMouseUp);
+        }
 
+        private void Remove()
+        {
+            if (test != null)
+            {
+                Mouse.RemoveMouseDownHandler(this.canvas, test.DWMouseDown);
+                Mouse.RemoveMouseMoveHandler(this.canvas, test.DWMouseMove);
+                Mouse.RemoveMouseUpHandler(this.canvas, test.DWMouseUp);
+            }
+        }
+
+        private void Button_Click_2(object sender, RoutedEventArgs e)
+        {
+            Remove();
+            test = new DTTexts(this.canvas);
+            Mouse.AddMouseDownHandler(this.canvas, test.DWMouseDown);
+            Mouse.AddMouseMoveHandler(this.canvas, test.DWMouseMove);
+            Mouse.AddMouseUpHandler(this.canvas, test.DWMouseUp);
+        }
+
+        private void Button_Click_3(object sender, RoutedEventArgs e)
+        {
+            Remove();
+            test = new DTLines(this.canvas);
+            Mouse.AddMouseDownHandler(this.canvas, test.DWMouseDown);
+            Mouse.AddMouseMoveHandler(this.canvas, test.DWMouseMove);
+            Mouse.AddMouseUpHandler(this.canvas, test.DWMouseUp);
         }
     }
 }
