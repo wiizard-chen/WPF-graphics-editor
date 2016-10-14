@@ -72,24 +72,48 @@ namespace WpfApplication1
             Mouse.AddMouseUpHandler(this.canvas, test.DWMouseUp);
         }
 
-        private void canvas_KeyDown(object sender, KeyEventArgs e)
-        {
-
-        }
-
         private void Button_Click_4(object sender, RoutedEventArgs e)
         {
+            var openFileDialog = new Microsoft.Win32.OpenFileDialog();
+            openFileDialog.Filter = "Image files (*.png;*.jpeg;*.jpg)|*.png;*.jpeg;*.jpg|All files (*.*)|*.*";
+            if(openFileDialog.ShowDialog()==true)
+            {
+                var str = openFileDialog.FileName;
+                ImageBrush brush = new ImageBrush();
+                brush.ImageSource = new BitmapImage(new Uri(str));
+                canvas.Background = brush;
 
+            }
         }
 
         private void Button_Click_5(object sender, RoutedEventArgs e)
         {
-
+            this.canvas.Children.Clear();
+            this.canvas.Background = Brushes.White;
         }
 
         private void Button_Click_6(object sender, RoutedEventArgs e)
         {
+            Rect bounds = VisualTreeHelper.GetDescendantBounds(this.canvas);
+            double dpi = 96d;
+            RenderTargetBitmap rtb = new RenderTargetBitmap((int)bounds.Width, (int)bounds.Height, dpi, dpi, PixelFormats.Default);
 
+            DrawingVisual dv = new DrawingVisual();
+            using (DrawingContext dc = dv.RenderOpen())
+            {
+                VisualBrush vb = new VisualBrush(this.canvas);
+                dc.DrawRectangle(vb, null, new Rect(new Point(), bounds.Size));
+            }
+            rtb.Render(dv);
+
+            BitmapEncoder jpedEncoder = new JpegBitmapEncoder();
+            jpedEncoder.Frames.Add(BitmapFrame.Create(rtb));
+            using (System.IO.MemoryStream ms = new System.IO.MemoryStream())
+            {
+                jpedEncoder.Save(ms);
+                var str = Environment.CurrentDirectory +"\\fuck.jpeg";
+                System.IO.File.WriteAllBytes(str, ms.ToArray());
+            }
         }
     }
 }
