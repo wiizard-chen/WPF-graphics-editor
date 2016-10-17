@@ -76,7 +76,7 @@ namespace WpfApplication1
         {
             var openFileDialog = new Microsoft.Win32.OpenFileDialog();
             openFileDialog.Filter = "Image files (*.png;*.jpeg;*.jpg)|*.png;*.jpeg;*.jpg|All files (*.*)|*.*";
-            if(openFileDialog.ShowDialog()==true)
+            if (openFileDialog.ShowDialog() == true)
             {
                 var str = openFileDialog.FileName;
                 ImageBrush brush = new ImageBrush();
@@ -111,7 +111,7 @@ namespace WpfApplication1
             using (System.IO.MemoryStream ms = new System.IO.MemoryStream())
             {
                 jpedEncoder.Save(ms);
-                var str = Environment.CurrentDirectory +"\\fuck.jpeg";
+                var str = Environment.CurrentDirectory + "\\fuck.jpeg";
                 System.IO.File.WriteAllBytes(str, ms.ToArray());
             }
         }

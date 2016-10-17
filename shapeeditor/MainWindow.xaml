@@ -6,6 +6,7 @@
         xmlns:local="clr-namespace:shapeeditor"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:s="clr-namespace:test"
+        xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
         Title="MainWindow"
         Width="738"
         Height="675"
@@ -16,7 +17,7 @@
         <CommandBinding Command="local:Commands.LineTool" Executed="cmd_LineTool" />
     </Window.CommandBindings>
     <Grid>
-        <Canvas x:Name="workspace">
+        <!--<Canvas x:Name="workspace">
             <Canvas.Background>
                 <SolidColorBrush Color="{DynamicResource {x:Static SystemColors.AppWorkspaceColorKey}}" />
             </Canvas.Background>
@@ -65,6 +66,7 @@
                     fuck
                 </Button>
             </ToolBar>
-        </ToolBarTray>
+        </ToolBarTray>-->
+        <xctk:ColorPicker Name="ClrPcker_Background" SelectedColorChanged="ClrPcker_Background_SelectedColorChanged" />
     </Grid>
 </Window>
