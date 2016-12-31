@@ -116,9 +116,13 @@ namespace WpfApplication1
             }
         }
 
-        private void Button_Click_7(object sender , RoutedEventArgs e)
+        private void Button_Click_7(object sender, RoutedEventArgs e)
         {
-
+            Remove();
+            test = new DTArrows(this.canvas);
+            Mouse.AddMouseDownHandler(this.canvas, test.DWMouseDown);
+            Mouse.AddMouseMoveHandler(this.canvas, test.DWMouseMove);
+            Mouse.AddMouseUpHandler(this.canvas, test.DWMouseUp);
         }
     }
 }

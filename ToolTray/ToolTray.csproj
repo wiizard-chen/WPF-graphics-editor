@@ -44,6 +44,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DTBrush\DTShapeBrush.cs" />
+    <Compile Include="DynamicAdorner\ArrowAdorner.cs" />
     <Compile Include="DynamicAdorner\RectangleAdorner.cs" />
     <Compile Include="DynamicShape\DTArrow.cs" />
     <Compile Include="DynamicShape\DTArrows.cs" />

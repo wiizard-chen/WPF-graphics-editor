@@ -75,7 +75,7 @@ namespace ToolTray
             tr.Arrange(new Rect(new Point(AdornedElement.RenderSize.Width - offset, -offset), sz));
             bl.Arrange(new Rect(new Point(-offset, AdornedElement.RenderSize.Height - offset), sz));
             br.Arrange(new Rect(new Point(AdornedElement.RenderSize.Width - offset, AdornedElement.RenderSize.Height - offset), sz));
-            mov.Arrange(new Rect(new Point(AdornedElement.RenderSize.Width / 2-offset, AdornedElement.RenderSize.Height/2-offset), sz));
+            mov.Arrange(new Rect(new Point(AdornedElement.RenderSize.Width / 2 - offset, AdornedElement.RenderSize.Height / 2 - offset), sz));
             return finalSize;
         }
 
@@ -93,7 +93,7 @@ namespace ToolTray
             {
                 Width = THUMB_SIZE,
                 Height = THUMB_SIZE,
-                HorizontalAlignment =HorizontalAlignment.Center,
+                HorizontalAlignment = HorizontalAlignment.Center,
                 VerticalAlignment = VerticalAlignment.Center,
                 Cursor = Cursors.SizeAll,
                 Template = new ControlTemplate(typeof(Thumb))
@@ -112,11 +112,11 @@ namespace ToolTray
                 if (ElementPositionChanged != null)
                     ElementPositionChanged(new Point(Canvas.GetLeft(element), Canvas.GetTop(element)), EventArgs.Empty);
             };
-            
+
             return thumb;
         }
         private Thumb GetResizeThumb(Cursor cur, HorizontalAlignment hor, VerticalAlignment ver)
-        { 
+        {
             Brush b;
             if (hor == HorizontalAlignment.Left)//左边
             {

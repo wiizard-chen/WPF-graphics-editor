@@ -46,6 +46,7 @@
             <Button Click="Button_Click_1">rectangle</Button>
             <Button Click="Button_Click_2">text</Button>
             <Button Click="Button_Click_3">line</Button>
+            <Button Click="Button_Click_7">Arrow</Button>
         </StackPanel>
 
         <StackPanel Grid.Row=" 2" Orientation="Horizontal">
