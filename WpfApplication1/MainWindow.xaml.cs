@@ -115,5 +115,10 @@ namespace WpfApplication1
                 System.IO.File.WriteAllBytes(str, ms.ToArray());
             }
         }
+
+        private void Button_Click_7(object sender , RoutedEventArgs e)
+        {
+
+        }
     }
 }

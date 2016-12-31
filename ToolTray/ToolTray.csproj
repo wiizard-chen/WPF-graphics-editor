@@ -45,6 +45,8 @@
   <ItemGroup>
     <Compile Include="DTBrush\DTShapeBrush.cs" />
     <Compile Include="DynamicAdorner\RectangleAdorner.cs" />
+    <Compile Include="DynamicShape\DTArrow.cs" />
+    <Compile Include="DynamicShape\DTArrows.cs" />
     <Compile Include="DynamicShape\DTLine.cs" />
     <Compile Include="DynamicShape\DTLines.cs" />
     <Compile Include="DynamicShape\DTRectangle.cs" />

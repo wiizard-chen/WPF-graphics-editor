@@ -67,5 +67,9 @@ namespace ToolTray
 
         }
 
+        public IDynamicShape GetDynamicShape()
+        {
+            return (this.Selected.Tag as IDynamicShape);
+        }
     }
 }

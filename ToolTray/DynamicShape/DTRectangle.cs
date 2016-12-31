@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Documents;
@@ -104,6 +105,8 @@ namespace ToolTray
                 Canvas.SetLeft(this.Container, this.StartPosition.X);
                 var layer = AdornerLayer.GetAdornerLayer(this.ParentCanvas);
                 RectAdroner = new RectangleAdorner(this.Container);
+                RectAdroner.ElementPositionChanged += this.PositionChanged;
+                RectAdroner.ElementSizeChanged += this.SizeChanged;
                 layer.Add(RectAdroner);
                 this.AdronerHidden();
             }
@@ -151,5 +154,26 @@ namespace ToolTray
 
         #endregion
 
+        private void PositionChanged(object sender, EventArgs e)
+        {
+            if (sender is Point)
+            {
+                var p = (Point)sender;
+                this.StartPosition = p;
+                Debug.Write(p.X);
+                Debug.Write(p.Y);
+            }
+        }
+
+        private void SizeChanged(object sender, EventArgs e)
+        {
+            if (sender is Size)
+            {
+                var s = (Size)sender;
+                this.Width = s.Width;
+                this.Height = s.Height;
+
+            }
+        }
     }
 }
