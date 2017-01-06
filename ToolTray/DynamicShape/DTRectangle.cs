@@ -160,8 +160,6 @@ namespace ToolTray
             {
                 var p = (Point)sender;
                 this.StartPosition = p;
-                Debug.Write(p.X);
-                Debug.Write(p.Y);
             }
         }
 

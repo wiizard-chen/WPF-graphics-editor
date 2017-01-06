@@ -131,21 +131,23 @@ namespace ToolTray
 
         public void MoveLine(object sender, EventArgs e)
         {
-            if (sender == null) return;
-            Point point = (Point)sender;
-            Point start = new Point(line.X1, line.Y1);
-            Point end = new Point(line.X2, line.Y2);
-            start.Offset(point.X, point.Y);
-            end.Offset(point.X, point.Y);
-            line.X1 = start.X;
-            line.Y1 = start.Y;
-            line.X2 = end.X;
-            line.Y2 = end.Y;
+            if (sender is Point)
+            {
+                Point point = (Point)sender;
+                Point start = new Point(line.X1, line.Y1);
+                Point end = new Point(line.X2, line.Y2);
+                start.Offset(point.X, point.Y);
+                end.Offset(point.X, point.Y);
+                line.X1 = start.X;
+                line.Y1 = start.Y;
+                line.X2 = end.X;
+                line.Y2 = end.Y;
 
-            //line.X1 = line.X1 + point.X;
-            //line.Y1 = line.Y1 + point.Y;
-            //line.X2 = line.X2 + point.X;
-            //line.Y2 = line.Y2 + point.Y;
+                //line.X1 = line.X1 + point.X;
+                //line.Y1 = line.Y1 + point.Y;
+                //line.X2 = line.X2 + point.X;
+                //line.Y2 = line.Y2 + point.Y;
+            }
         }
         #endregion
 

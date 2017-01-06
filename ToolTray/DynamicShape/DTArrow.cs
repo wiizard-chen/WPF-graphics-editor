@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Documents;
@@ -12,6 +13,8 @@ namespace ToolTray
         #region 属性
 
         public Point StartPosition { get; set; }
+
+        public Point EndPosition { get; set; }
 
         public Point LocalPosition { get; set; }
 
@@ -88,6 +91,7 @@ namespace ToolTray
             this.ArrowLine.Data = LineGroup;
             this.ArrowLine.StrokeThickness = 2;
             this.ArrowLine.Stroke = this.ArrowLine.Fill = Brushes.Black;
+            this.ArrowLine.Tag = this;
 
             this.ParentCanvas = parentcanvas;
             this.ParentCanvas.Children.Add(ArrowLine);
@@ -108,18 +112,22 @@ namespace ToolTray
         public void GraphicDistortion(Point point)
         {
             Point p1 = this.StartPosition;
-            Point p2 = point;
+            this.EndPosition = point;
+
             this.connectorGeometry.EndPoint = point;
-            Point p = new Point(p1.X + ((p2.X - p1.X) / 1.00005), p1.Y + ((p2.Y - p1.Y) / 1.00005));
+            Point p = new Point(p1.X + ((EndPosition.X - p1.X) / 1.00005), p1.Y + ((EndPosition.Y - p1.Y) / 1.00005));
+            this.ArrowFigure.StartPoint = p;
+
             Point lpoint = new Point(p.X + 6, p.Y + 15);
             Point rpoint = new Point(p.X - 6, p.Y + 15);
-            this.ArrowFigure.StartPoint = p;
+
             RotateTransform transform = new RotateTransform();
-            double theta = Math.Atan2((p2.Y - p1.Y), (p2.X - p1.X)) * 180 / Math.PI;
+            double theta = Math.Atan2((EndPosition.Y - p1.Y), (EndPosition.X - p1.X)) * 180 / Math.PI;
             transform.Angle = theta + 90;
             transform.CenterX = p.X;
             transform.CenterY = p.Y;
             this.pathGeometry.Transform = transform;
+
             seg1.Point = lpoint;
             seg2.Point = rpoint;
             seg3.Point = p;
@@ -128,11 +136,11 @@ namespace ToolTray
         public void GraphicDetermine()
         {
             var layer = AdornerLayer.GetAdornerLayer(this.ParentCanvas);
-            //arrowAdroner = new LineAdorner(this.line, this.StartPoint, this.EndPoint);
+            arrowAdroner = new ArrowAdorner(this.ArrowLine, this.StartPosition, this.EndPosition);
             //arrowAdroner.ElementEndChanged += this.EndResize;
             //arrowAdroner.ElementStartChanged += this.StartResize;
-            //arrowAdroner.ElementMove += this.MoveLine;
-            //layer.Add(arrowAdroner);
+            arrowAdroner.ElementMove += this.MoveLine;
+            layer.Add(arrowAdroner);
             this.AdronerHidden();
         }
 
@@ -141,12 +149,51 @@ namespace ToolTray
 
         #region 装饰器
 
-        public void AdronerHidden()
-        {
-        }
-
         public void AdronerVisble()
         {
+            this.arrowAdroner.Visibility = Visibility.Visible;
+        }
+
+        public void AdronerHidden()
+        {
+            this.arrowAdroner.Visibility = Visibility.Hidden;
+        }
+
+
+
+        public void MoveLine(object sender, EventArgs e)
+        {
+            if (sender is Point)
+            {
+                Point point = (Point)sender;
+                
+
+                Point start = new Point(this.StartPosition.X, this.StartPosition.Y);
+                Point end = new Point(this.EndPosition.X, this.EndPosition.Y);
+                start.Offset(point.X, point.Y);
+                end.Offset(point.X, point.Y);
+                this.StartPosition = start;
+                this.EndPosition = end;
+                this.connectorGeometry.StartPoint = this.StartPosition;
+                this.connectorGeometry.EndPoint = this.EndPosition;
+
+                Point p = new Point(start.X + ((end.X - start.X) / 1.00005), start.Y + ((end.Y - start.Y) / 1.00005));
+                ArrowFigure.StartPoint = p;
+
+                Point lpoint = new Point(p.X + 6, p.Y + 15);
+                Point rpoint = new Point(p.X - 6, p.Y + 15);
+                seg1.Point = lpoint;
+                seg2.Point = rpoint;
+                seg3.Point = p;
+
+                RotateTransform transform = new RotateTransform();
+                double theta = Math.Atan2((end.Y - start.Y), (end.X - start.X)) * 180 / Math.PI;
+                transform.Angle = theta + 90;
+                transform.CenterX = p.X;
+                transform.CenterY = p.Y;
+                pathGeometry.Transform = transform;
+            }
+
         }
 
         #endregion

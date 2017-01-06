@@ -24,7 +24,7 @@ namespace ToolTray
 
 
 
-        private const double THUMB_SIZE = 12;
+        private const double THUMB_SIZE = 20;
         private const double MINIMAL_SIZE = 20;
         private const double MOVE_OFFSET = 8;
 
@@ -56,8 +56,8 @@ namespace ToolTray
             startpoint = start;
             endpoint = end;
             visCollec = new VisualCollection(this);
-            visCollec.Add(Start = getReizeThumb(HorizontalAlignment.Left, VerticalAlignment.Top));
-            visCollec.Add(End = getReizeThumb(HorizontalAlignment.Right, VerticalAlignment.Bottom));
+            //visCollec.Add(Start = getReizeThumb(HorizontalAlignment.Left, VerticalAlignment.Top));
+            //visCollec.Add(End = getReizeThumb(HorizontalAlignment.Right, VerticalAlignment.Bottom));
             visCollec.Add(Move = getMoveThumb());
         }
         #endregion
@@ -66,8 +66,8 @@ namespace ToolTray
         {
             double offset = THUMB_SIZE / 2;
             Size size = new Size(THUMB_SIZE, THUMB_SIZE);
-            Start.Arrange(new Rect(new Point(startpoint.X - offset, startpoint.Y - offset), size));
-            End.Arrange(new Rect(new Point(endpoint.X - offset, endpoint.Y - offset), size));
+           // Start.Arrange(new Rect(new Point(startpoint.X - offset, startpoint.Y - offset), size));
+           // End.Arrange(new Rect(new Point(endpoint.X - offset, endpoint.Y - offset), size));
             Move.Arrange(new Rect(
                 new Point(
                    startpoint.X - (startpoint.X - endpoint.X) / 2 - offset,
@@ -172,8 +172,8 @@ namespace ToolTray
 
         private Brush GetMoveEllipseBack()
         {
-            string lan = "M 0,5 h 10 M 5,0 v 10";
-            return GetBrush(lan, 2);
+            string lan = "M 0,10 h 20 M 10,0 v 20";
+            return GetBrush(lan, 3);
         }
 
 
