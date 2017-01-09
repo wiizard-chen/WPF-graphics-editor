@@ -8,7 +8,7 @@ using System.Windows.Shapes;
 
 namespace ToolTray
 {
-    public class TArrow : IAdroner, IDynamicShape
+    public class TArrow : IAdroner, IDynamicShape, ISaveTheSize
     {
         #region 属性
 
@@ -90,7 +90,7 @@ namespace ToolTray
             this.ArrowLine = new Path();
             this.ArrowLine.Data = LineGroup;
             this.ArrowLine.StrokeThickness = 2;
-            this.ArrowLine.Stroke = this.ArrowLine.Fill = Brushes.Black;
+            this.ArrowLine.Stroke = this.ArrowLine.Fill = Brushes.Red;
             this.ArrowLine.Tag = this;
 
             this.ParentCanvas = parentcanvas;
@@ -166,7 +166,7 @@ namespace ToolTray
             if (sender is Point)
             {
                 Point point = (Point)sender;
-                
+
 
                 Point start = new Point(this.StartPosition.X, this.StartPosition.Y);
                 Point end = new Point(this.EndPosition.X, this.EndPosition.Y);
@@ -196,7 +196,53 @@ namespace ToolTray
 
         }
 
-        #endregion
+        public void SaveTheSize(Canvas canvas, double ratio)
+        {
+            Point p1 = new Point(this.StartPosition.X / ratio, this.StartPosition.Y / ratio);
+            Point p2 = new Point(this.EndPosition.X / ratio, this.EndPosition.Y / ratio);
+            var pg = new PathGeometry();
+            var af = new PathFigure();
+            var lg = new GeometryGroup();
 
+            Point p = new Point(p1.X + ((p2.X - p1.X) / 1.00005), p1.Y + ((p2.Y - p1.Y) / 1.00005));
+            af.StartPoint = p;
+
+            Point lpoint = new Point(p.X + 6, p.Y + 15);
+            Point rpoint = new Point(p.X - 6, p.Y + 15);
+
+            var seg11 = new LineSegment();
+            seg11.Point = lpoint;
+            af.Segments.Add(seg11);
+
+            var seg22 = new LineSegment();
+            seg22.Point = rpoint;
+            af.Segments.Add(seg22);
+
+            var seg33 = new LineSegment();
+            seg33.Point = p;
+            af.Segments.Add(seg33);
+            pg.Figures.Add(ArrowFigure);
+
+            RotateTransform transform = new RotateTransform();
+            double theta = Math.Atan2((p2.Y - p1.Y), (p2.X - p1.X)) * 180 / Math.PI;
+            transform.Angle = theta + 90;
+            transform.CenterX = p.X;
+            transform.CenterY = p.Y;
+            pg.Transform = transform;
+            lg.Children.Add(pathGeometry);
+
+            var cg = new LineGeometry();
+            cg.StartPoint = p1;
+            cg.EndPoint = p2;
+            lg.Children.Add(cg);
+
+            var al = new Path();
+            al.Data = lg;
+            al.StrokeThickness = 2;
+            al.Stroke = al.Fill = Brushes.Red;
+            al.Tag = this;
+            canvas.Children.Add(al);
+        }
+        #endregion
     }
 }
