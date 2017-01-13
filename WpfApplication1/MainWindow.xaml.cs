@@ -40,7 +40,7 @@ namespace WpfApplication1
             Mouse.AddMouseDownHandler(this.canvas, test.DWMouseDown);
             Mouse.AddMouseMoveHandler(this.canvas, test.DWMouseMove);
             Mouse.AddMouseUpHandler(this.canvas, test.DWMouseUp);
-            Keyboard.AddPreviewKeyDownHandler(this, (test as IDWKeyboardOperation).DWKeyDown);
+            Keyboard.AddPreviewKeyDownHandler(this.canvas, (test as IDWKeyboardOperation).DWKeyDown);
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
@@ -168,12 +168,10 @@ namespace WpfApplication1
                     (item.Tag as ISaveTheSize).SaveTheSize(savecanvas1, _ratio);
                 }
             }
-            //this.canvas = savecanvas;
-            //SaveImage(savecanvas1); 
-
-
             double dpi = 96d;
             RenderTargetBitmap rtb = new RenderTargetBitmap((int)savecanvas1.Width, (int)savecanvas1.Height, dpi, dpi, PixelFormats.Default);
+
+
 
             DrawingVisual dv = new DrawingVisual();
             using (DrawingContext dc = dv.RenderOpen())
