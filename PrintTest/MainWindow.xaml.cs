@@ -24,5 +24,14 @@ namespace PrintTest
         {
             InitializeComponent();
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            PrintDialog printDialog = new PrintDialog();
+            if(printDialog.ShowDialog() == true)
+            {
+                printDialog.PrintVisual(this._canvas, "A simple Drawing");
+            }
+        }
     }
 }

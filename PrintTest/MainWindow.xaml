@@ -7,6 +7,16 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="350" Width="525">
     <Grid>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+        <Canvas x:Name="_canvas">
+            <TextBlock Canvas.Left="48" Canvas.Top="15" FontSize="16">姓名：</TextBlock>
+            <TextBlock Canvas.Left="101" Canvas.Top="15"  FontSize="16">chen</TextBlock>
+            <Line Canvas.Top="41" X1="0" Y1="0" X2="510" Y2="0" Stroke="Black"/>
+            <Image Source="C:\Users\Administrator\Pictures\2p4i.png" Width="100" Height="100" Canvas.Left="48" Canvas.Top="46"></Image>
+        </Canvas>
+        <Button Grid.Row="1" Click="Button_Click">Print</Button>
     </Grid>
 </Window>
